@@ -4,7 +4,7 @@ export type Tone = "info" | "danger" | "warning" | "success";
 
 type StatCardProps = {
   label: string;
-  value: number;
+  value: number | string;
   tone: Tone;
 };
 
