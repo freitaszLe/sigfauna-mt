@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { formatarData, formatarDataHora } from "@/lib/agregacoes";
 import { atualizarResgates, useResgates } from "@/lib/armazenamento";
-import { nomeDoBioma } from "@/lib/dados";
 import {
   aplicarTransicao,
   destinosPermitidos,
@@ -13,6 +12,7 @@ import {
   type ErrosTransicao,
 } from "@/lib/fluxo";
 import type { Etapa, Resgate } from "@/lib/types";
+import BiomaInfo from "./BiomaInfo";
 import PageBlock from "./PageBlock";
 import blockStyles from "./PageBlock.module.css";
 import StatusBadge from "./StatusBadge";
@@ -74,7 +74,7 @@ export default function FichaResgate() {
         <div>
           <dt>Bioma do local do resgate</dt>
           <dd>
-            {nomeDoBioma(resgate.biomaCodigo)} ({resgate.metodoIdentificacaoBioma})
+            <BiomaInfo resgate={resgate} />
           </dd>
         </div>
         <div>

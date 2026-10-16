@@ -8,6 +8,7 @@ import {
 } from "@/lib/agregacoes";
 import { useResgates } from "@/lib/armazenamento";
 import { nomeDoBioma } from "@/lib/dados";
+import { biomaEfetivo } from "@/lib/geo";
 import GraficoBarras from "./GraficoBarras";
 import blockStyles from "./PageBlock.module.css";
 import RecebimentosTable from "./RecebimentosTable";
@@ -17,9 +18,10 @@ import cardStyles from "./StatCard.module.css";
 export default function PainelVisaoGeral() {
   const { resgates, origem } = useResgates();
   const resumo = resumirPainel(resgates);
-  const simulados = resgates.filter(
-    (resgate) => resgate.metodoIdentificacaoBioma === "simulado",
+  const calculados = resgates.filter(
+    (resgate) => biomaEfetivo(resgate).metodo === "calculado",
   ).length;
+  const divergentes = resgates.filter((resgate) => biomaEfetivo(resgate).diverge).length;
 
   return (
     <>
@@ -40,7 +42,12 @@ export default function PainelVisaoGeral() {
       <h2 className={blockStyles.sectionTitle}>
         Resgates por bioma do local do resgate{" "}
         <span className={blockStyles.sectionNote}>
-          ({simulados} de {resumo.total} com bioma simulado, sem cálculo geográfico)
+          ({calculados} de {resumo.total} calculados pela coordenada fictícia
+          {calculados < resumo.total ? "; os demais pelo bioma informado" : ""};{" "}
+          {divergentes === 0
+            ? "nenhuma divergência com o registrado"
+            : `${divergentes} divergência(s) com o registrado`}
+          )
         </span>
       </h2>
       <GraficoBarras

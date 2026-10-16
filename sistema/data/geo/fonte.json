@@ -24,14 +24,19 @@
       "códigos internos: 1 → amazonia, 3 → cerrado, 6 → pantanal (compatíveis com data/biomas-mt.json)",
       "simplificação de 5% (weighted, keep-shapes) e limpeza de topologia; 2 interseções reparadas pelo mapshaper",
       "limite-mt.geojson gerado pela dissolução dos três biomas simplificados, para as bordas coincidirem",
-      "coordenadas com 4 casas decimais (cerca de 11 m)"
+      "coordenadas com 4 casas decimais (cerca de 11 m)",
+      "arquivos renomeados de .geojson para .geo.json na etapa 09 para importação direta; conteúdo e hashes inalterados"
     ],
-    "areasAntesDaSimplificacaoKm2": { "amazonia": 515076, "cerrado": 339732, "pantanal": 53812 },
+    "areasAntesDaSimplificacaoKm2": {
+      "amazonia": 515076,
+      "cerrado": 339732,
+      "pantanal": 53812
+    },
     "areaLimiteMtMesmoMetodoKm2": 908675,
     "observacao": "Áreas calculadas pelo mapshaper em superfície esférica; a área oficial publicada pelo IBGE para MT (903.208,361 km²) usa outro método e não é comparável diretamente."
   },
   "arquivos": {
-    "biomas-mt.geojson": "80cc4959aba0f5b89ba43fd5efeac6e1f106705c87227278f98509bb83c4c58c",
-    "limite-mt.geojson": "4b86d6ca3e7083de7ea8184c00a98d3ffab61bb2efb5949fdd9ac5334652fa2b"
+    "biomas-mt.geo.json": "80cc4959aba0f5b89ba43fd5efeac6e1f106705c87227278f98509bb83c4c58c",
+    "limite-mt.geo.json": "4b86d6ca3e7083de7ea8184c00a98d3ffab61bb2efb5949fdd9ac5334652fa2b"
   }
 }

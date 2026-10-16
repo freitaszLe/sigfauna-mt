@@ -1,3 +1,4 @@
+import { biomaEfetivo } from "./geo";
 import {
   BIOMAS,
   ETAPAS,
@@ -39,14 +40,30 @@ export function contarPorGrupo(resgates: readonly Resgate[]): { grupo: Grupo; to
   })).sort((a, b) => b.total - a.total || a.grupo.localeCompare(b.grupo, "pt-BR"));
 }
 
-/** Quantidade por bioma do local do resgate, na ordem do catálogo; biomas sem registro aparecem com 0. */
+/**
+ * Quantidade por bioma do local do resgate (bioma efetivo: calculado pela coordenada
+ * quando houver), na ordem do catálogo; biomas sem registro aparecem com 0.
+ */
 export function contarPorBioma(
   resgates: readonly Resgate[],
 ): { bioma: BiomaCodigo; total: number }[] {
   return BIOMAS.map((bioma) => ({
     bioma,
-    total: resgates.filter((resgate) => resgate.biomaCodigo === bioma).length,
+    total: resgates.filter((resgate) => biomaEfetivo(resgate).codigo === bioma).length,
   }));
+}
+
+/** Espécies em ordem decrescente de quantidade; empate em ordem alfabética. */
+export function rankingDeEspecies(
+  resgates: readonly Resgate[],
+): { especie: string; total: number }[] {
+  const contagem = new Map<string, number>();
+  for (const resgate of resgates) {
+    contagem.set(resgate.especie, (contagem.get(resgate.especie) ?? 0) + 1);
+  }
+  return [...contagem.entries()]
+    .map(([especie, total]) => ({ especie, total }))
+    .sort((a, b) => b.total - a.total || a.especie.localeCompare(b.especie, "pt-BR"));
 }
 
 /** Ordena pela data do resgate, mais recente primeiro; empate resolvido pelo protocolo. */

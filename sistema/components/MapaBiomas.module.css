@@ -1,0 +1,17 @@
+.mapa {
+  /* Isola o empilhamento do Leaflet (z-index 400+) para não cobrir a barra e o menu fixos */
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  width: 100%;
+  height: 420px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #eef1f4;
+}
+
+@media (max-width: 768px) {
+  .mapa {
+    height: 320px;
+  }
+}

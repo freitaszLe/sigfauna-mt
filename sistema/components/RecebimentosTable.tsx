@@ -1,6 +1,6 @@
 import { formatarData } from "@/lib/agregacoes";
-import { nomeDoBioma } from "@/lib/dados";
 import type { Resgate } from "@/lib/types";
+import BiomaInfo from "./BiomaInfo";
 import StatusBadge from "./StatusBadge";
 import { TOM_DA_ETAPA } from "./etapas";
 import styles from "./RecebimentosTable.module.css";
@@ -47,8 +47,7 @@ export default function RecebimentosTable({
                   </span>
                 </td>
                 <td>
-                  {nomeDoBioma(resgate.biomaCodigo)}
-                  <span className={styles.secondary}>{resgate.metodoIdentificacaoBioma}</span>
+                  <BiomaInfo resgate={resgate} />
                 </td>
                 <td>
                   <StatusBadge label={resgate.etapa} tone={TOM_DA_ETAPA[resgate.etapa]} />

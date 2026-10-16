@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { formatarDataHora } from "@/lib/agregacoes";
 import { useResgates } from "@/lib/armazenamento";
-import { nomeDoBioma } from "@/lib/dados";
 import { ultimaMudanca } from "@/lib/fluxo";
+import BiomaInfo from "./BiomaInfo";
 import StatusBadge from "./StatusBadge";
 import { TOM_DA_ETAPA } from "./etapas";
 import PageBlock from "./PageBlock";
@@ -63,7 +63,9 @@ export default function PaginaAcompanhamento() {
                       {resgate.grupo} · {resgate.identificacao}
                     </span>
                   </td>
-                  <td>{nomeDoBioma(resgate.biomaCodigo)}</td>
+                  <td>
+                    <BiomaInfo resgate={resgate} />
+                  </td>
                   <td>
                     <StatusBadge label={resgate.etapa} tone={TOM_DA_ETAPA[resgate.etapa]} />
                   </td>

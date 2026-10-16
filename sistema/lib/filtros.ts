@@ -1,8 +1,11 @@
+import { biomaEfetivo } from "./geo";
 import type { BiomaCodigo, Etapa, Grupo, Resgate } from "./types";
 
 export type FiltrosResgates = {
   busca: string;
   grupo: Grupo | "";
+  /** Espécie exata (lista de espécies existentes). */
+  especie: string;
   bioma: BiomaCodigo | "";
   etapa: Etapa | "";
   /** AAAA-MM-DD, inclusive. */
@@ -14,6 +17,7 @@ export type FiltrosResgates = {
 export const FILTROS_VAZIOS: FiltrosResgates = {
   busca: "",
   grupo: "",
+  especie: "",
   bioma: "",
   etapa: "",
   dataInicial: "",
@@ -52,7 +56,8 @@ export function filtrarResgates(
       return false;
     }
     if (filtros.grupo && resgate.grupo !== filtros.grupo) return false;
-    if (filtros.bioma && resgate.biomaCodigo !== filtros.bioma) return false;
+    if (filtros.especie && resgate.especie !== filtros.especie) return false;
+    if (filtros.bioma && biomaEfetivo(resgate).codigo !== filtros.bioma) return false;
     if (filtros.etapa && resgate.etapa !== filtros.etapa) return false;
     if (filtros.dataInicial && resgate.dataResgate < filtros.dataInicial) return false;
     if (filtros.dataFinal && resgate.dataResgate > filtros.dataFinal) return false;
