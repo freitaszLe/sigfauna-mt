@@ -1,0 +1,44 @@
+/* Botão de ação "ver" no padrão da referência: ciano com ícone de olho */
+.botaoOlho {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 28px;
+  border-radius: var(--radius);
+  background: var(--info);
+  color: #ffffff;
+}
+
+.botaoOlho:hover {
+  background: #138496;
+}
+
+.aviso {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--info);
+  border-radius: var(--radius);
+  background: var(--surface-alt);
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px 16px;
+}
+
+.dados div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dados dt {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.dados dd {
+  font-weight: 600;
+}

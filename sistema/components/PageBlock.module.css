@@ -47,6 +47,23 @@
   cursor: not-allowed;
 }
 
+/* Botão vermelho para Cancelar/Voltar, ao lado do botão principal */
+.dangerButton {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--danger);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dangerButton:hover {
+  background: #bb2d3b;
+}
+
 .notice {
   padding: 10px 12px;
   border: 1px dashed var(--border);

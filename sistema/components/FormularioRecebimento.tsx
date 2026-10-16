@@ -207,7 +207,7 @@ export default function FormularioRecebimento({
         <button type="submit" className={blockStyles.primaryButton}>
           Registrar recebimento
         </button>
-        <button type="button" className={styles.secondaryButton} onClick={onCancelar}>
+        <button type="button" className={blockStyles.dangerButton} onClick={onCancelar}>
           Cancelar
         </button>
       </div>

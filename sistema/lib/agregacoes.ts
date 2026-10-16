@@ -61,6 +61,12 @@ export function ultimosRecebimentos(resgates: readonly Resgate[], quantidade: nu
 }
 
 export function formatarData(dataIso: string): string {
-  const [ano, mes, dia] = dataIso.split("-");
+  const [ano, mes, dia] = dataIso.slice(0, 10).split("-");
   return `${dia}/${mes}/${ano}`;
+}
+
+/** "AAAA-MM-DDTHH:MM..." → "DD/MM/AAAA HH:MM", sem converter fuso. */
+export function formatarDataHora(dataHoraIso: string): string {
+  const hora = dataHoraIso.slice(11, 16);
+  return hora ? `${formatarData(dataHoraIso)} ${hora}` : formatarData(dataHoraIso);
 }
