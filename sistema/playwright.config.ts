@@ -22,8 +22,11 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   // Build de produção numa porta própria, para não disputar a porta 3000 da prévia.
+  // No CI o build já foi feito no passo anterior; aqui só inicia o servidor.
   webServer: {
-    command: `npm run build && npm run start -- --port ${PORTA}`,
+    command: process.env.CI
+      ? `npm run start -- --port ${PORTA}`
+      : `npm run build && npm run start -- --port ${PORTA}`,
     url: `http://localhost:${PORTA}/entrar`,
     reuseExistingServer: false,
     timeout: 240_000,
