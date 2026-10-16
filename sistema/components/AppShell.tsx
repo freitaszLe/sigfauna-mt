@@ -4,13 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Suspense, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
+import { FILAS } from "@/lib/filas";
 import { sair, useUsuario, type Usuario } from "@/lib/operador";
 import AvisoArmazenamento from "./AvisoArmazenamento";
 import {
   IconeAcompanhamento,
+  IconeConcluido,
+  IconeEspera,
+  IconeLista,
   IconeMapa,
   IconePainel,
   IconePegada,
+  IconeReabilitacao,
+  IconeRecebido,
+  IconeSeta,
+  IconeTratamento,
+  IconeTriagem,
 } from "./IconesMenu";
 import styles from "./AppShell.module.css";
 
@@ -68,24 +77,101 @@ function NavLinks({ pathname, onNavegar }: NavLinksProps) {
     <ul>
       {NAV_ITEMS.map((item) => {
         const active = isActive(pathname, item.href);
+        const link = (
+          <Link
+            href={item.href}
+            className={`${styles.navLink} ${active ? styles.navLinkActive : ""}`}
+            aria-current={pathname === item.href ? "page" : undefined}
+            title={item.label}
+            onClick={onNavegar}
+          >
+            <span className={styles.navIcon} aria-hidden="true">
+              {item.icon}
+            </span>
+            <span className={styles.navTexto}>{item.label}</span>
+          </Link>
+        );
         return (
           <li key={item.href}>
-            <Link
-              href={item.href}
-              className={`${styles.navLink} ${active ? styles.navLinkActive : ""}`}
-              aria-current={active ? "page" : undefined}
-              title={item.label}
-              onClick={onNavegar}
-            >
-              <span className={styles.navIcon} aria-hidden="true">
-                {item.icon}
-              </span>
-              <span className={styles.navTexto}>{item.label}</span>
-            </Link>
+            {item.href === "/acompanhamento" ? (
+              <ItemComSubmenu link={link} ativo={active} pathname={pathname} onNavegar={onNavegar} />
+            ) : (
+              link
+            )}
           </li>
         );
       })}
     </ul>
+  );
+}
+
+const ICONE_DA_FILA: Record<string, ReactNode> = {
+  recebido: <IconeRecebido />,
+  triagem: <IconeTriagem />,
+  tratamento: <IconeTratamento />,
+  reabilitacao: <IconeReabilitacao />,
+  destinacao: <IconeEspera />,
+  concluidos: <IconeConcluido />,
+};
+
+const ITENS_SUBMENU = [
+  { href: "/acompanhamento", nome: "Todos os ativos", icone: <IconeLista /> },
+  ...FILAS.map((fila) => ({
+    href: `/acompanhamento/etapa/${fila.slug}`,
+    nome: fila.nome,
+    icone: ICONE_DA_FILA[fila.slug],
+  })),
+];
+
+type ItemComSubmenuProps = NavLinksProps & { link: ReactNode; ativo: boolean };
+
+/**
+ * Acompanhamento com submenu recolhível (uma fila por etapa). Abre sozinho nas páginas do
+ * Acompanhamento; a seta abre ou fecha em qualquer página.
+ */
+function ItemComSubmenu({ link, ativo, pathname, onNavegar }: ItemComSubmenuProps) {
+  const [escolha, setEscolha] = useState<boolean | null>(null);
+  const aberto = escolha ?? ativo;
+
+  return (
+    <>
+      <div className={styles.linhaComSubmenu}>
+        {link}
+        <button
+          type="button"
+          className={`${styles.botaoSubmenu} ${aberto ? styles.botaoSubmenuAberto : ""}`}
+          aria-expanded={aberto}
+          aria-controls="submenu-acompanhamento"
+          aria-label={aberto ? "Recolher etapas do acompanhamento" : "Mostrar etapas do acompanhamento"}
+          title={aberto ? "Recolher etapas" : "Mostrar etapas"}
+          onClick={() => setEscolha(!aberto)}
+        >
+          <IconeSeta />
+        </button>
+      </div>
+      {aberto ? (
+        <ul id="submenu-acompanhamento" className={styles.submenu} aria-label="Etapas do acompanhamento">
+          {ITENS_SUBMENU.map((item) => {
+            const atual = pathname === item.href;
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`${styles.subLink} ${atual ? styles.subLinkAtivo : ""}`}
+                  aria-current={atual ? "page" : undefined}
+                  onClick={onNavegar}
+                >
+                  <span className={styles.subIcone} aria-hidden="true">
+                    {item.icone}
+                  </span>
+                  <span>{item.nome}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+    </>
   );
 }
 
