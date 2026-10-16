@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
+import { restaurarDemonstracao } from "@/lib/armazenamento";
+import AvisoArmazenamento from "./AvisoArmazenamento";
 import styles from "./AppShell.module.css";
 
 const NAV_ITEMS = [
@@ -61,9 +63,30 @@ export default function AppShell({ children }: { children: ReactNode }) {
             );
           })}
         </ul>
+        <div className={styles.sidebarFooter}>
+          <button
+            type="button"
+            className={styles.restoreButton}
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Restaurar os registros iniciais da demonstração? As alterações desta aba serão perdidas.",
+                )
+              ) {
+                restaurarDemonstracao();
+                setMenuOpen(false);
+              }
+            }}
+          >
+            Restaurar demonstração
+          </button>
+        </div>
       </nav>
 
-      <main className={styles.content}>{children}</main>
+      <main className={styles.content}>
+        <AvisoArmazenamento />
+        {children}
+      </main>
     </div>
   );
 }

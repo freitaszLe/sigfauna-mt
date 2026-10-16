@@ -1,0 +1,14 @@
+{
+  "fonte": "IBGE — Bioma predominante por município, 2024 (Biomas e Sistema Costeiro-Marinho do Brasil)",
+  "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/documentos/Bioma_Predominante_por_Municipio_2024.csv",
+  "ultimaModificacaoArquivo": "2024-07-01T17:36:03Z",
+  "consultadoEm": "2026-10-16T04:16:47Z",
+  "sha256Arquivo": "192dfa72717b541a6dc9963ec12ba6d71df5e3c597c4247c2ac28ee51c4c75d5",
+  "conferencia": "Linhas com UF = MT: 141 municípios; bioma predominante Amazônia 76, Cerrado 61, Pantanal 4.",
+  "observacao": "Lista de biomas presentes em MT obtida do bioma predominante de cada município. Os códigos abaixo são identificadores internos do projeto, não códigos do IBGE; a malha oficial (polígonos) será obtida na etapa 08.",
+  "biomas": [
+    { "codigo": "amazonia", "nome": "Amazônia" },
+    { "codigo": "cerrado", "nome": "Cerrado" },
+    { "codigo": "pantanal", "nome": "Pantanal" }
+  ]
+}

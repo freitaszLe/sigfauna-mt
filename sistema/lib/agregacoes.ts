@@ -1,0 +1,65 @@
+import {
+  BIOMAS,
+  ETAPAS,
+  GRUPOS,
+  type BiomaCodigo,
+  type Etapa,
+  type Grupo,
+  type Resgate,
+} from "./types";
+
+export type ResumoPainel = {
+  total: number;
+  ativos: number;
+  emCuidado: number;
+  concluidos: number;
+};
+
+export function contarPorEtapa(resgates: readonly Resgate[]): Record<Etapa, number> {
+  const contagem = Object.fromEntries(ETAPAS.map((etapa) => [etapa, 0])) as Record<Etapa, number>;
+  for (const resgate of resgates) contagem[resgate.etapa] += 1;
+  return contagem;
+}
+
+export function resumirPainel(resgates: readonly Resgate[]): ResumoPainel {
+  const porEtapa = contarPorEtapa(resgates);
+  return {
+    total: resgates.length,
+    ativos: resgates.length - porEtapa["Concluído"],
+    emCuidado: porEtapa["Em tratamento"] + porEtapa["Em reabilitação"],
+    concluidos: porEtapa["Concluído"],
+  };
+}
+
+/** Quantidade por grupo, da maior para a menor; grupos sem registro aparecem com 0. */
+export function contarPorGrupo(resgates: readonly Resgate[]): { grupo: Grupo; total: number }[] {
+  return GRUPOS.map((grupo) => ({
+    grupo,
+    total: resgates.filter((resgate) => resgate.grupo === grupo).length,
+  })).sort((a, b) => b.total - a.total || a.grupo.localeCompare(b.grupo, "pt-BR"));
+}
+
+/** Quantidade por bioma do local do resgate, na ordem do catálogo; biomas sem registro aparecem com 0. */
+export function contarPorBioma(
+  resgates: readonly Resgate[],
+): { bioma: BiomaCodigo; total: number }[] {
+  return BIOMAS.map((bioma) => ({
+    bioma,
+    total: resgates.filter((resgate) => resgate.biomaCodigo === bioma).length,
+  }));
+}
+
+/** Resgates mais recentes pela data do resgate; empate resolvido pelo protocolo. */
+export function ultimosRecebimentos(resgates: readonly Resgate[], quantidade: number): Resgate[] {
+  return [...resgates]
+    .sort(
+      (a, b) =>
+        b.dataResgate.localeCompare(a.dataResgate) || b.protocolo.localeCompare(a.protocolo),
+    )
+    .slice(0, quantidade);
+}
+
+export function formatarData(dataIso: string): string {
+  const [ano, mes, dia] = dataIso.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
