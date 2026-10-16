@@ -7,7 +7,10 @@
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -10.913,
+      "lng": -58.778
+    },
     "dataResgate": "2026-07-01",
     "etapa": "Concluído",
     "observacao": "Registro fictício criado para a atividade.",
@@ -57,7 +60,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -13.289,
+      "lng": -60.204
+    },
     "dataResgate": "2026-07-04",
     "etapa": "Concluído",
     "observacao": "Registro fictício criado para a atividade.",
@@ -107,7 +113,10 @@
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -15.664,
+      "lng": -57.351
+    },
     "dataResgate": "2026-07-07",
     "etapa": "Concluído",
     "observacao": "Registro fictício criado para a atividade.",
@@ -150,7 +159,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.081,
+      "lng": -58.064
+    },
     "dataResgate": "2026-07-10",
     "etapa": "Concluído",
     "observacao": "Registro fictício criado para a atividade.",
@@ -193,7 +205,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "pantanal",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -16.72,
+      "lng": -56.282
+    },
     "dataResgate": "2026-07-13",
     "etapa": "Concluído",
     "observacao": "Registro fictício criado para a atividade.",
@@ -236,7 +251,10 @@
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -11.969,
+      "lng": -58.599
+    },
     "dataResgate": "2026-07-16",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -286,7 +304,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -10.385,
+      "lng": -57.173
+    },
     "dataResgate": "2026-07-19",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -336,7 +357,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -17.116,
+      "lng": -53.607
+    },
     "dataResgate": "2026-07-22",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -386,7 +410,10 @@
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.741,
+      "lng": -52.538
+    },
     "dataResgate": "2026-07-25",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -436,7 +463,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "pantanal",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -17.6,
+      "lng": -57.619
+    },
     "dataResgate": "2026-07-28",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -472,7 +502,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -10.473,
+      "lng": -59.045
+    },
     "dataResgate": "2026-07-31",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -508,7 +541,10 @@
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -11.661,
+      "lng": -55.658
+    },
     "dataResgate": "2026-08-03",
     "etapa": "Aguardando destinação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -544,7 +580,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.829,
+      "lng": -54.944
+    },
     "dataResgate": "2026-08-06",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -580,7 +619,10 @@
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.301,
+      "lng": -53.518
+    },
     "dataResgate": "2026-08-09",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -616,7 +658,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "pantanal",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -17.072,
+      "lng": -56.014
+    },
     "dataResgate": "2026-08-12",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -652,7 +697,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.697,
+      "lng": -60.159
+    },
     "dataResgate": "2026-08-15",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -688,7 +736,10 @@
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -11.133,
+      "lng": -54.454
+    },
     "dataResgate": "2026-08-18",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -731,7 +782,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -15.357,
+      "lng": -53.741
+    },
     "dataResgate": "2026-08-21",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -774,7 +828,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -13.773,
+      "lng": -55.524
+    },
     "dataResgate": "2026-08-24",
     "etapa": "Em reabilitação",
     "observacao": "Registro fictício criado para a atividade.",
@@ -817,7 +874,10 @@
     "grupo": "Ave",
     "biomaCodigo": "pantanal",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -16.368,
+      "lng": -56.415
+    },
     "dataResgate": "2026-08-27",
     "etapa": "Em tratamento",
     "observacao": "Registro fictício criado para a atividade.",
@@ -853,7 +913,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -9.242,
+      "lng": -61.051
+    },
     "dataResgate": "2026-08-30",
     "etapa": "Em tratamento",
     "observacao": "Registro fictício criado para a atividade.",
@@ -889,7 +952,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -11.617,
+      "lng": -58.198
+    },
     "dataResgate": "2026-09-02",
     "etapa": "Em tratamento",
     "observacao": "Registro fictício criado para a atividade.",
@@ -925,7 +991,10 @@
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -17.82,
+      "lng": -53.206
+    },
     "dataResgate": "2026-09-05",
     "etapa": "Em tratamento",
     "observacao": "Registro fictício criado para a atividade.",
@@ -961,7 +1030,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.257,
+      "lng": -56.059
+    },
     "dataResgate": "2026-09-08",
     "etapa": "Em triagem",
     "observacao": "Registro fictício criado para a atividade.",
@@ -990,7 +1062,10 @@
     "grupo": "Ave",
     "biomaCodigo": "pantanal",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -17.424,
+      "lng": -57.218
+    },
     "dataResgate": "2026-09-11",
     "etapa": "Em triagem",
     "observacao": "Registro fictício criado para a atividade.",
@@ -1019,7 +1094,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -10.297,
+      "lng": -60.783
+    },
     "dataResgate": "2026-09-14",
     "etapa": "Em triagem",
     "observacao": "Registro fictício criado para a atividade.",
@@ -1048,7 +1126,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -15.049,
+      "lng": -59.357
+    },
     "dataResgate": "2026-09-17",
     "etapa": "Recebido",
     "observacao": "Registro fictício criado para a atividade.",
@@ -1070,7 +1151,10 @@
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.653,
+      "lng": -54.008
+    },
     "dataResgate": "2026-09-20",
     "etapa": "Recebido",
     "observacao": "Registro fictício criado para a atividade.",
@@ -1092,7 +1176,10 @@
     "grupo": "Réptil",
     "biomaCodigo": "cerrado",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -14.125,
+      "lng": -54.722
+    },
     "dataResgate": "2026-09-23",
     "etapa": "Recebido",
     "observacao": "Registro fictício criado para a atividade.",
@@ -1114,7 +1201,10 @@
     "grupo": "Mamífero",
     "biomaCodigo": "pantanal",
     "metodoIdentificacaoBioma": "simulado",
-    "coordenadaFicticia": null,
+    "coordenadaFicticia": {
+      "lat": -17.292,
+      "lng": -55.613
+    },
     "dataResgate": "2026-09-26",
     "etapa": "Recebido",
     "observacao": "Registro fictício criado para a atividade.",

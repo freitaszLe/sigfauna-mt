@@ -1,0 +1,37 @@
+{
+  "atribuicao": "Fonte: IBGE, Biomas e Sistema Costeiro-Marinho do Brasil, 1:250.000, 2025. Limite estadual: IBGE, API de Malhas Territoriais. Recorte e simplificação para fins demonstrativos.",
+  "biomas": {
+    "fonte": "IBGE — Biomas e Sistema Costeiro-Marinho do Brasil, escala 1:250.000, edição 2025",
+    "url": "https://geoftp.ibge.gov.br/informacoes_ambientais/estudos_ambientais/biomas/vetores/2025_Biomas-e-Sistema-Costeiro-Marinho-do-Brasil-1-250000_shp.zip",
+    "ultimaModificacaoArquivo": "2025-11-18T13:00:07Z",
+    "camada": "lml_bioma_e250k_v20250911_A",
+    "versao": "v20250911",
+    "sistemaReferencia": "SIRGAS 2000, coordenadas geográficas (graus)",
+    "sha256Zip": "247b15c427070805044ebe02012f15552850d535fbfecaddb359875cdda1ea8f",
+    "camposOriginais": "CD_BIOMA, NM_BIOMA (1 Amazônia, 2 Caatinga, 3 Cerrado, 4 Mata Atlântica, 5 Pampa, 6 Pantanal)"
+  },
+  "limiteEstadual": {
+    "fonte": "IBGE — API de Malhas Territoriais v3, UF 51 (Mato Grosso), qualidade máxima",
+    "url": "https://servicodados.ibge.gov.br/api/v3/malhas/estados/51?formato=application/vnd.geo%2Bjson&qualidade=maxima",
+    "sha256Resposta": "ffc4789c7518d5ff10882c18e1e1671a2a7de9187718e4b305f7735d04bcc554"
+  },
+  "consultadoEm": "2026-10-16T05:06:52Z",
+  "processamento": {
+    "ferramenta": "mapshaper 0.7.69 (npx, uso temporário, fora das dependências do projeto)",
+    "passos": [
+      "recorte dos biomas pelo limite estadual de MT (qualidade máxima)",
+      "seleção dos biomas presentes em MT: CD_BIOMA 1, 3 e 6",
+      "códigos internos: 1 → amazonia, 3 → cerrado, 6 → pantanal (compatíveis com data/biomas-mt.json)",
+      "simplificação de 5% (weighted, keep-shapes) e limpeza de topologia; 2 interseções reparadas pelo mapshaper",
+      "limite-mt.geojson gerado pela dissolução dos três biomas simplificados, para as bordas coincidirem",
+      "coordenadas com 4 casas decimais (cerca de 11 m)"
+    ],
+    "areasAntesDaSimplificacaoKm2": { "amazonia": 515076, "cerrado": 339732, "pantanal": 53812 },
+    "areaLimiteMtMesmoMetodoKm2": 908675,
+    "observacao": "Áreas calculadas pelo mapshaper em superfície esférica; a área oficial publicada pelo IBGE para MT (903.208,361 km²) usa outro método e não é comparável diretamente."
+  },
+  "arquivos": {
+    "biomas-mt.geojson": "80cc4959aba0f5b89ba43fd5efeac6e1f106705c87227278f98509bb83c4c58c",
+    "limite-mt.geojson": "4b86d6ca3e7083de7ea8184c00a98d3ffab61bb2efb5949fdd9ac5334652fa2b"
+  }
+}
