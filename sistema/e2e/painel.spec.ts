@@ -1,6 +1,5 @@
-import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
-import { abrirComUsuario, PASTA_EVIDENCIAS } from "./apoio";
+import { abrirComUsuario, arquivoDePrint } from "./apoio";
 
 // Totais conhecidos de data/resgates-demo.json (30 resgates fictícios).
 const INDICADORES = {
@@ -31,5 +30,5 @@ test("painel mostra os totais da amostra conhecida", async ({ page }) => {
     expect.arrayContaining(["Ave 11", "Mamífero 11", "Réptil 8"]),
   );
 
-  await page.screenshot({ path: path.join(PASTA_EVIDENCIAS, "print-1-painel.png"), fullPage: true });
+  await page.screenshot({ path: arquivoDePrint("print-1-painel"), fullPage: true });
 });

@@ -1,6 +1,5 @@
-import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
-import { abrirComUsuario, PASTA_EVIDENCIAS } from "./apoio";
+import { abrirComUsuario, arquivoDePrint } from "./apoio";
 
 const contador = (page: Page) => page.getByText(/resgates no mapa e na tabela$/);
 const legenda = (page: Page, bioma: string) =>
@@ -31,7 +30,7 @@ test.describe("Mapa por bioma", () => {
     await expect(resumo(page)).toContainText("Lobo-guará: 2");
 
     await page.screenshot({
-      path: path.join(PASTA_EVIDENCIAS, "print-2-mapa-bioma.png"),
+      path: arquivoDePrint("print-2-mapa-bioma"),
       fullPage: true,
     });
   });
