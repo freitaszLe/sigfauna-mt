@@ -24,10 +24,10 @@ test("painel mostra os totais da amostra conhecida", async ({ page }) => {
   }
 
   expect(await linhasDoGrafico(page, "Resgates por bioma")).toEqual(
-    expect.arrayContaining(["Amazônia 12", "Cerrado 12", "Pantanal 6"]),
+    expect.arrayContaining(["Amazônia 12 (40%)", "Cerrado 12 (40%)", "Pantanal 6 (20%)"]),
   );
   expect(await linhasDoGrafico(page, "Resgates por grupo")).toEqual(
-    expect.arrayContaining(["Ave 11", "Mamífero 11", "Réptil 8"]),
+    expect.arrayContaining(["Ave 11 (37%)", "Mamífero 11 (37%)", "Réptil 8 (27%)"]),
   );
 
   await page.screenshot({ path: arquivoDePrint("print-1-painel"), fullPage: true });
