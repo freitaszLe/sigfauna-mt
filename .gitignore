@@ -1,0 +1,25 @@
+# Dependências e artefatos da aplicação
+**/node_modules/
+**/.next/
+**/out/
+**/coverage/
+**/playwright-report/
+**/test-results/
+*.log
+.DS_Store
+# Segredos
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+# Materiais fornecidos para referência local; não publicar automaticamente
+referencias/
+# Cópias isoladas e configurações pessoais do agente
+.claude/worktrees/
+.claude/settings.local.json
+# Evidências binárias entram em anexos/artefatos após revisão
+evidencias/*.png
+evidencias/*.webm
+evidencias/*.zip
