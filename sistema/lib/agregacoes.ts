@@ -49,14 +49,15 @@ export function contarPorBioma(
   }));
 }
 
-/** Resgates mais recentes pela data do resgate; empate resolvido pelo protocolo. */
+/** Ordena pela data do resgate, mais recente primeiro; empate resolvido pelo protocolo. */
+export function ordenarRecentes(resgates: readonly Resgate[]): Resgate[] {
+  return [...resgates].sort(
+    (a, b) => b.dataResgate.localeCompare(a.dataResgate) || b.protocolo.localeCompare(a.protocolo),
+  );
+}
+
 export function ultimosRecebimentos(resgates: readonly Resgate[], quantidade: number): Resgate[] {
-  return [...resgates]
-    .sort(
-      (a, b) =>
-        b.dataResgate.localeCompare(a.dataResgate) || b.protocolo.localeCompare(a.protocolo),
-    )
-    .slice(0, quantidade);
+  return ordenarRecentes(resgates).slice(0, quantidade);
 }
 
 export function formatarData(dataIso: string): string {

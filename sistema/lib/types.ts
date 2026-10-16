@@ -20,11 +20,12 @@ export type BiomaCodigo = (typeof BIOMAS)[number];
 
 /**
  * Como o bioma do local do resgate foi identificado:
- * - simulado: atribuído aos dados fictícios, sem cálculo geográfico;
+ * - simulado: atribuído aos exemplos iniciais, sem cálculo geográfico;
+ * - manual: escolhido pelo usuário no cadastro;
  * - calculado: obtido da coordenada fictícia pela malha oficial (etapa 09).
  * Não indica a origem natural do animal.
  */
-export const METODOS_IDENTIFICACAO_BIOMA = ["simulado", "calculado"] as const;
+export const METODOS_IDENTIFICACAO_BIOMA = ["simulado", "manual", "calculado"] as const;
 
 export type MetodoIdentificacaoBioma = (typeof METODOS_IDENTIFICACAO_BIOMA)[number];
 

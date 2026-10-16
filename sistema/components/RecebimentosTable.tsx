@@ -8,9 +8,14 @@ import styles from "./RecebimentosTable.module.css";
 type RecebimentosTableProps = {
   resgates: readonly Resgate[];
   legenda: string;
+  mensagemVazia?: string;
 };
 
-export default function RecebimentosTable({ resgates, legenda }: RecebimentosTableProps) {
+export default function RecebimentosTable({
+  resgates,
+  legenda,
+  mensagemVazia = "Nenhum resgate registrado nesta sessão.",
+}: RecebimentosTableProps) {
   return (
     <div className={styles.wrapper}>
       <table className={styles.table}>
@@ -28,7 +33,7 @@ export default function RecebimentosTable({ resgates, legenda }: RecebimentosTab
           {resgates.length === 0 ? (
             <tr>
               <td colSpan={5} className={styles.empty}>
-                Nenhum resgate registrado nesta sessão.
+                {mensagemVazia}
               </td>
             </tr>
           ) : (
