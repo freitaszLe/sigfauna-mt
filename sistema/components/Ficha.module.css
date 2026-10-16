@@ -42,3 +42,104 @@
 .dados dd {
   font-weight: 600;
 }
+
+/* ---------- Abas de avaliação por etapa ---------- */
+
+.avaliacao {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.abas {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+
+.aba {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.aba:hover:not(:disabled) {
+  background: #e7ebef;
+}
+
+.aba:disabled {
+  color: #9aa4ae;
+  cursor: not-allowed;
+}
+
+.abaAtiva {
+  border-bottom-color: var(--nav);
+  background: var(--surface);
+}
+
+.marcaAtual {
+  padding: 0 6px;
+  border-radius: 3px;
+  background: var(--nav);
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.marcaFeita {
+  color: #1e7e34;
+}
+
+.painelAba {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+}
+
+.registro {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--info);
+  border-radius: var(--radius);
+  background: var(--surface-alt);
+}
+
+.registroCabecalho {
+  margin-bottom: 8px;
+}
+
+.registroObservacao {
+  margin-top: 8px;
+  color: var(--text-muted);
+}
+
+.respostas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 6px 16px;
+}
+
+.respostas dt {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.respostas dd {
+  font-weight: 600;
+}
+
+.sugestao {
+  padding: 8px 12px;
+  border: 1px dashed var(--nav);
+  border-radius: var(--radius);
+  background: #f1f7ec;
+}

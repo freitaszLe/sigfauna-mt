@@ -27,7 +27,7 @@ export default function PainelVisaoGeral() {
     <>
       {origem === "inicial" ? (
         <p className={blockStyles.notice} role="status">
-          Carregando dados da sessão…
+          Carregando…
         </p>
       ) : null}
 
@@ -42,7 +42,7 @@ export default function PainelVisaoGeral() {
       <h2 className={blockStyles.sectionTitle}>
         Resgates por bioma do local do resgate{" "}
         <span className={blockStyles.sectionNote}>
-          ({calculados} de {resumo.total} calculados pela coordenada fictícia
+          ({calculados} de {resumo.total} calculados pela coordenada
           {calculados < resumo.total ? "; os demais pelo bioma informado" : ""};{" "}
           {divergentes === 0
             ? "nenhuma divergência com o registrado"

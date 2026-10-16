@@ -153,11 +153,12 @@ export default function ListaResgates({ resgates }: ListaResgatesProps) {
       </div>
 
       <RecebimentosTable
+        key={JSON.stringify(filtros)}
         resgates={encontrados}
-        legenda="Resgates desta sessão, do mais recente para o mais antigo"
+        legenda="Resgates registrados, do mais recente para o mais antigo"
         mensagemVazia={
           resgates.length === 0
-            ? "Nenhum resgate registrado nesta sessão."
+            ? "Nenhum resgate registrado."
             : "Nenhum resgate encontrado com esses filtros."
         }
       />

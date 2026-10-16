@@ -13,6 +13,7 @@ import {
 } from "@/lib/cadastro";
 import { atualizarResgates, useResgates } from "@/lib/armazenamento";
 import { CATALOGO_BIOMAS } from "@/lib/dados";
+import { rotuloOperador, useUsuario } from "@/lib/operador";
 import { GRUPOS } from "@/lib/types";
 import blockStyles from "./PageBlock.module.css";
 import styles from "./Formulario.module.css";
@@ -37,6 +38,7 @@ export default function FormularioRecebimento({
   onRegistrado,
 }: FormularioRecebimentoProps) {
   const { resgates } = useResgates();
+  const sessaoUsuario = useUsuario();
   const [entrada, setEntrada] = useState<EntradaRecebimento>(() => ({
     ...ENTRADA_VAZIA,
     protocolo: proximoProtocolo(resgates, new Date().getFullYear()),
@@ -62,7 +64,7 @@ export default function FormularioRecebimento({
     const protocolo = normalizarProtocolo(entrada.protocolo);
     const confirmacao = await Swal.fire({
       title: "Confirmar registro?",
-      text: `O resgate ${protocolo} será registrado nesta sessão.`,
+      text: `O resgate ${protocolo} será registrado.`,
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Confirmar",
@@ -70,11 +72,13 @@ export default function FormularioRecebimento({
     });
     if (!confirmacao.isConfirmed) return;
 
-    atualizarResgates((atuais) => [...atuais, criarResgate(entrada, atuais, new Date())]);
+    const rotulo =
+      sessaoUsuario.situacao === "presente" ? rotuloOperador(sessaoUsuario.usuario) : undefined;
+    atualizarResgates((atuais) => [...atuais, criarResgate(entrada, atuais, new Date(), rotulo)]);
 
     await Swal.fire({
       title: "Resgate registrado",
-      text: `O resgate ${protocolo} foi registrado nesta sessão.`,
+      text: `O resgate ${protocolo} foi registrado.`,
       icon: "success",
       confirmButtonText: "OK",
     });
@@ -131,7 +135,7 @@ export default function FormularioRecebimento({
           <label htmlFor="campo-identificacao" className={styles.label}>
             Identificação do animal <span className={styles.required}>*</span>
           </label>
-          <input {...propsDoCampo("identificacao")} placeholder="Ex.: Indivíduo fictício 031" />
+          <input {...propsDoCampo("identificacao")} placeholder="Ex.: Macho adulto · anilha MT-0031" />
           {erroDoCampo("identificacao")}
         </div>
 
@@ -199,8 +203,8 @@ export default function FormularioRecebimento({
       </div>
 
       <p className={styles.hint}>
-        <span className={styles.required}>*</span> Campos obrigatórios. Sem município, endereço ou
-        coordenada nesta etapa. Registro fictício, salvo apenas nesta aba.
+        <span className={styles.required}>*</span> Campos obrigatórios. Não informe município nem
+        endereço.
       </p>
 
       <div className={styles.actions}>

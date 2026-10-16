@@ -1,4 +1,4 @@
-import { dataHoraLocal, OPERADOR_DEMONSTRACAO } from "./cadastro";
+import { dataHoraLocal, OPERADOR_PADRAO } from "./cadastro";
 import { ETAPAS, type Etapa, type Resgate } from "./types";
 
 /** Caminhos permitidos entre etapas, conforme docs/REQUISITOS.md. */
@@ -15,53 +15,69 @@ export function destinosPermitidos(etapa: Etapa): readonly Etapa[] {
   return TRANSICOES[etapa];
 }
 
-export type ErrosTransicao = {
+/**
+ * Encaminhamentos possíveis após uma avaliação: permanecer na etapa atual (só registra a
+ * avaliação) ou seguir para um dos caminhos permitidos. Caso concluído não tem encaminhamento.
+ */
+export function encaminhamentosPossiveis(etapa: Etapa): readonly Etapa[] {
+  return etapa === "Concluído" ? [] : [etapa, ...destinosPermitidos(etapa)];
+}
+
+export type ErrosEncaminhamento = {
   destino?: string;
   observacao?: string;
 };
 
-/** Retorna os erros da mudança; objeto vazio quando ela é permitida. */
-export function validarTransicao(
+/** Retorna os erros do encaminhamento; objeto vazio quando ele é permitido. */
+export function validarEncaminhamento(
   resgate: Resgate,
   destino: string,
   observacao: string,
-): ErrosTransicao {
-  const erros: ErrosTransicao = {};
-  const permitidos = destinosPermitidos(resgate.etapa);
+): ErrosEncaminhamento {
+  const erros: ErrosEncaminhamento = {};
+  const possiveis = encaminhamentosPossiveis(resgate.etapa);
 
-  if (permitidos.length === 0) {
+  if (possiveis.length === 0) {
     erros.destino = `O caso está em "${resgate.etapa}" e não tem próximas etapas.`;
   } else if (!destino) {
-    erros.destino = "Selecione a próxima etapa.";
+    erros.destino = "Selecione o encaminhamento.";
   } else if (!ETAPAS.includes(destino as Etapa)) {
     erros.destino = "Etapa desconhecida.";
-  } else if (!permitidos.includes(destino as Etapa)) {
+  } else if (!possiveis.includes(destino as Etapa)) {
     erros.destino = `A mudança de "${resgate.etapa}" para "${destino}" não é permitida.`;
   }
 
-  if (!observacao.trim()) erros.observacao = "Informe a observação da mudança.";
+  if (!observacao.trim()) erros.observacao = "Informe a observação da avaliação.";
 
   return erros;
 }
 
-/** Aplica uma mudança já validada: troca a etapa e acrescenta um evento ao histórico. */
-export function aplicarTransicao(
+/**
+ * Aplica um encaminhamento já validado. Se o destino é a própria etapa, registra só a
+ * avaliação; senão, troca a etapa. Em ambos os casos guarda as respostas do formulário.
+ */
+export function aplicarEncaminhamento(
   resgate: Resgate,
   destino: Etapa,
   observacao: string,
+  respostas: Record<string, string>,
   agora: Date,
+  operador: string = OPERADOR_PADRAO,
 ): Resgate {
+  const permanece = destino === resgate.etapa;
   return {
     ...resgate,
     etapa: destino,
     historico: [
       ...resgate.historico,
       {
+        tipo: permanece ? "avaliacao" : "mudanca",
         de: resgate.etapa,
         para: destino,
         dataHora: dataHoraLocal(agora),
         observacao: observacao.trim(),
-        operador: OPERADOR_DEMONSTRACAO,
+        operador,
+        respostas,
       },
     ],
   };

@@ -13,7 +13,8 @@ export type EntradaRecebimento = {
 
 export type ErrosRecebimento = Partial<Record<keyof EntradaRecebimento, string>>;
 
-export const OPERADOR_DEMONSTRACAO = "Operador fictício (demonstração)";
+/** Operador usado quando nenhum usuário está identificado. */
+export const OPERADOR_PADRAO = "Operador";
 
 export const ENTRADA_VAZIA: EntradaRecebimento = {
   protocolo: "",
@@ -127,6 +128,7 @@ export function criarResgate(
   entrada: EntradaRecebimento,
   resgates: readonly Resgate[],
   agora: Date,
+  operador: string = OPERADOR_PADRAO,
 ): Resgate {
   const observacao = entrada.observacao.trim();
   return {
@@ -143,11 +145,12 @@ export function criarResgate(
     observacao,
     historico: [
       {
+        tipo: "entrada",
         de: null,
         para: "Recebido",
         dataHora: dataHoraLocal(agora),
         observacao: observacao || "Entrada registrada no cadastro.",
-        operador: OPERADOR_DEMONSTRACAO,
+        operador,
       },
     ],
   };

@@ -56,7 +56,7 @@ export default function PaginaDistribuicao() {
     <PageBlock title="Distribuição dos resgates">
       <p className={styles.aviso}>
         O bioma indica o local do resgate. Não comprova a origem natural do animal nem autoriza
-        soltura. Coordenadas e registros são fictícios.
+        soltura.
       </p>
 
       <div className={formStyles.filters} role="search" aria-label="Filtros do mapa">
@@ -167,7 +167,7 @@ export default function PaginaDistribuicao() {
         <div>
           {origem === "inicial" ? (
             <p className={blockStyles.notice} role="status">
-              Carregando dados da sessão…
+              Carregando…
             </p>
           ) : (
             <MapaBiomas
@@ -202,11 +202,10 @@ export default function PaginaDistribuicao() {
             ))}
           </ul>
           <p className={formStyles.hint}>
-            Cada bioma tem uma cor fixa; o número ao lado é a quantidade de resgates da amostra
-            fictícia filtrada, não risco ambiental nem incidência populacional. Bioma mais claro e
-            com borda tracejada: sem registros com os filtros atuais, o que não significa ausência
-            de resgates reais. Pontos amarelos: bioma calculado diverge do registrado ou coordenada
-            fora da malha.
+            Cada bioma tem uma cor fixa; o número ao lado é a quantidade de resgates registrados
+            com os filtros atuais, não risco ambiental nem incidência populacional. Bioma mais claro
+            e com borda tracejada: sem registros com os filtros atuais. Pontos amarelos: bioma
+            calculado diverge do registrado ou coordenada fora da malha.
           </p>
 
           <h2 className={blockStyles.sectionTitle}>Bioma selecionado</h2>
@@ -262,6 +261,7 @@ export default function PaginaDistribuicao() {
       </div>
 
       <RecebimentosTable
+        key={JSON.stringify(filtros)}
         resgates={ordenarRecentes(filtrados)}
         legenda="Resgates filtrados (mesmo conjunto do mapa), do mais recente para o mais antigo"
         mensagemVazia="Nenhum resgate encontrado com esses filtros."

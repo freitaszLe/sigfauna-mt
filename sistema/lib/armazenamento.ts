@@ -10,11 +10,9 @@ export const CHAVE_SESSAO = "fauna-u06:v1";
  * Origem dos dados exibidos:
  * - inicial: renderização no servidor e hidratação (sessão ainda não lida);
  * - sessao: dados lidos/gravados no sessionStorage desta aba;
- * - memoria: sessionStorage indisponível; a recarga perde as alterações;
- * - corrompido: conteúdo salvo inválido; nada é gravado até restaurar;
- * - versaoAnterior: conteúdo salvo em outra versão do esquema; nada é gravado até restaurar.
+ * - memoria: sessionStorage indisponível; a recarga perde as alterações.
  */
-export type OrigemDados = "inicial" | "sessao" | "memoria" | "corrompido" | "versaoAnterior";
+export type OrigemDados = "inicial" | "sessao" | "memoria";
 
 export type EstadoResgates = {
   resgates: readonly Resgate[];
@@ -31,6 +29,21 @@ function serializar(resgates: readonly Resgate[]): string {
   return JSON.stringify(estado);
 }
 
+/** Grava os dados iniciais na sessão (ou mantém em memória se o armazenamento falhar). */
+function gravarDadosIniciais(): EstadoResgates {
+  try {
+    window.sessionStorage.setItem(CHAVE_SESSAO, serializar(RESGATES_DEMO));
+    return { resgates: RESGATES_DEMO, origem: "sessao" };
+  } catch {
+    return { resgates: RESGATES_DEMO, origem: "memoria" };
+  }
+}
+
+/**
+ * Ao recarregar, a aba continua com os dados da sessão. Os dados iniciais são gravados
+ * quando a aba ainda não tem nada salvo, quando o conteúdo salvo é de outra versão dos
+ * dados ou quando está em formato inválido.
+ */
 function lerSessao(): EstadoResgates {
   let bruto: string | null;
   try {
@@ -39,28 +52,15 @@ function lerSessao(): EstadoResgates {
     return { resgates: RESGATES_DEMO, origem: "memoria" };
   }
 
-  // Primeira visita nesta aba: grava os exemplos. Só acontece quando não há nada salvo.
-  if (bruto === null) {
+  if (bruto !== null) {
     try {
-      window.sessionStorage.setItem(CHAVE_SESSAO, serializar(RESGATES_DEMO));
-      return { resgates: RESGATES_DEMO, origem: "sessao" };
+      const estado = validarEstadoArmazenado(JSON.parse(bruto));
+      if (estado) return { resgates: estado.resgates, origem: "sessao" };
     } catch {
-      return { resgates: RESGATES_DEMO, origem: "memoria" };
+      // JSON inválido: substituído pelos dados iniciais abaixo.
     }
   }
-
-  try {
-    const conteudo: unknown = JSON.parse(bruto);
-    const estado = validarEstadoArmazenado(conteudo);
-    if (estado) return { resgates: estado.resgates, origem: "sessao" };
-    const versao = (conteudo as { versao?: unknown } | null)?.versao;
-    if (typeof versao === "number" && versao !== VERSAO_ESQUEMA) {
-      return { resgates: RESGATES_DEMO, origem: "versaoAnterior" };
-    }
-  } catch {
-    // JSON inválido: tratado como corrompido abaixo.
-  }
-  return { resgates: RESGATES_DEMO, origem: "corrompido" };
+  return gravarDadosIniciais();
 }
 
 function obterEstado(): EstadoResgates {
@@ -82,7 +82,7 @@ function definirEstado(novo: EstadoResgates) {
   ouvintes.forEach((ouvinte) => ouvinte());
 }
 
-/** Aplica uma alteração e grava na sessão quando ela está disponível e válida. */
+/** Aplica uma alteração e grava na sessão quando ela está disponível. */
 export function atualizarResgates(alterar: (atuais: readonly Resgate[]) => Resgate[]) {
   const atual = obterEstado();
   const resgates = alterar(atual.resgates);
@@ -95,17 +95,6 @@ export function atualizarResgates(alterar: (atuais: readonly Resgate[]) => Resga
     }
   }
   definirEstado({ resgates, origem });
-}
-
-/** Volta aos registros iniciais removendo apenas a chave do projeto. */
-export function restaurarDemonstracao() {
-  try {
-    window.sessionStorage.removeItem(CHAVE_SESSAO);
-    window.sessionStorage.setItem(CHAVE_SESSAO, serializar(RESGATES_DEMO));
-    definirEstado({ resgates: RESGATES_DEMO, origem: "sessao" });
-  } catch {
-    definirEstado({ resgates: RESGATES_DEMO, origem: "memoria" });
-  }
 }
 
 /**

@@ -35,15 +35,28 @@ export type CoordenadaFicticia = {
   lng: number;
 };
 
+/**
+ * Tipos de evento do histórico:
+ * - entrada: registro do recebimento (de = null);
+ * - mudanca: avaliação da etapa com encaminhamento para outra etapa;
+ * - avaliacao: avaliação registrada sem mudar de etapa (de = para).
+ */
+export const TIPOS_EVENTO = ["entrada", "mudanca", "avaliacao"] as const;
+
+export type TipoEvento = (typeof TIPOS_EVENTO)[number];
+
 export type EventoHistorico = {
+  tipo: TipoEvento;
   /** Etapa de origem; null no evento de entrada. */
   de: Etapa | null;
   para: Etapa;
   /** Data e hora no formato ISO 8601 com fuso. */
   dataHora: string;
   observacao: string;
-  /** Operador fictício, sempre identificado como tal. */
+  /** Nome de quem registrou o evento. */
   operador: string;
+  /** Respostas do formulário de avaliação da etapa de origem (id do campo → valor). */
+  respostas?: Record<string, string>;
 };
 
 export type Resgate = {
@@ -69,7 +82,8 @@ export type Bioma = {
   nome: string;
 };
 
-export const VERSAO_ESQUEMA = 2;
+/** Versão do formato e dos dados iniciais; ao mudar, sessões antigas recebem os dados atuais. */
+export const VERSAO_ESQUEMA = 4;
 
 export type EstadoArmazenado = {
   versao: typeof VERSAO_ESQUEMA;

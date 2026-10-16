@@ -25,6 +25,13 @@
   --topbar-height: 52px;
 }
 
+/* Barra mais alta em telas menores, onde a logo fica na barra */
+@media (max-width: 768px) {
+  :root {
+    --topbar-height: 60px;
+  }
+}
+
 html {
   height: 100%;
 }

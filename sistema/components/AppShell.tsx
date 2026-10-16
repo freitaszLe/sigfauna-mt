@@ -1,18 +1,57 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Suspense, useState, type ReactNode } from "react";
-import { restaurarDemonstracao } from "@/lib/armazenamento";
+import { usePathname, useRouter } from "next/navigation";
+import { Suspense, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
+import { sair, useUsuario, type Usuario } from "@/lib/operador";
 import AvisoArmazenamento from "./AvisoArmazenamento";
+import {
+  IconeAcompanhamento,
+  IconeMapa,
+  IconePainel,
+  IconePegada,
+} from "./IconesMenu";
 import styles from "./AppShell.module.css";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Visão geral", icon: "▦" },
-  { href: "/resgates", label: "Resgates e pacientes", icon: "☰" },
-  { href: "/acompanhamento", label: "Acompanhamento", icon: "↻" },
-  { href: "/distribuicao", label: "Distribuição dos resgates", icon: "◩" },
+  { href: "/", label: "Visão geral", icon: <IconePainel /> },
+  { href: "/resgates", label: "Resgates e pacientes", icon: <IconePegada /> },
+  { href: "/acompanhamento", label: "Acompanhamento", icon: <IconeAcompanhamento /> },
+  { href: "/distribuicao", label: "Distribuição dos resgates", icon: <IconeMapa /> },
 ];
+
+/* Preferência de menu recolhido (só do navegador de quem usa; não é dado do sistema). */
+const CHAVE_MENU = "fauna-u06:menu-recolhido";
+const ouvintesMenu = new Set<() => void>();
+
+function lerMenuRecolhido(): boolean {
+  try {
+    return window.localStorage.getItem(CHAVE_MENU) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function gravarMenuRecolhido(recolhido: boolean) {
+  try {
+    window.localStorage.setItem(CHAVE_MENU, recolhido ? "1" : "0");
+  } catch {
+    // Sem armazenamento: a preferência vale só até recarregar.
+  }
+  ouvintesMenu.forEach((ouvinte) => ouvinte());
+}
+
+function useMenuRecolhido(): boolean {
+  return useSyncExternalStore(
+    (ouvinte) => {
+      ouvintesMenu.add(ouvinte);
+      return () => ouvintesMenu.delete(ouvinte);
+    },
+    lerMenuRecolhido,
+    () => false,
+  );
+}
 
 function isActive(pathname: string | null, href: string) {
   if (pathname === null) return false;
@@ -35,12 +74,13 @@ function NavLinks({ pathname, onNavegar }: NavLinksProps) {
               href={item.href}
               className={`${styles.navLink} ${active ? styles.navLinkActive : ""}`}
               aria-current={active ? "page" : undefined}
+              title={item.label}
               onClick={onNavegar}
             >
               <span className={styles.navIcon} aria-hidden="true">
                 {item.icon}
               </span>
-              {item.label}
+              <span className={styles.navTexto}>{item.label}</span>
             </Link>
           </li>
         );
@@ -54,13 +94,67 @@ function NavLinksComEndereco({ onNavegar }: { onNavegar: () => void }) {
   return <NavLinks pathname={usePathname()} onNavegar={onNavegar} />;
 }
 
+function UsuarioAtual({ usuario, className }: { usuario: Usuario; className: string }) {
+  const router = useRouter();
+  return (
+    <div className={className}>
+      <span className={styles.operadorNome} title={usuario.email}>
+        {usuario.nome}
+      </span>
+      <button
+        type="button"
+        className={styles.sairButton}
+        onClick={() => {
+          sair();
+          router.replace("/entrar");
+        }}
+      >
+        Sair
+      </button>
+    </div>
+  );
+}
+
+function Logo({ className, sizes }: { className: string; sizes: string }) {
+  return (
+    <Image
+      src="/marca/sigfauna-mt.webp"
+      alt="SIGFAUNA MT — Gestão de Fauna Silvestre"
+      width={2000}
+      height={667}
+      sizes={sizes}
+      priority
+      className={className}
+    />
+  );
+}
+
 export default function AppShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const fecharMenu = () => setMenuOpen(false);
+  const recolhido = useMenuRecolhido();
+  const sessao = useUsuario();
+  const router = useRouter();
+
+  // Sem usuário na sessão, vai para a tela de acesso.
+  useEffect(() => {
+    if (sessao.situacao === "ausente") router.replace("/entrar");
+  }, [sessao.situacao, router]);
 
   return (
-    <div className={styles.shell}>
+    <div className={`${styles.shell} ${recolhido ? styles.shellRecolhido : ""}`}>
       <header className={styles.topbar}>
+        <button
+          type="button"
+          className={styles.recolherButton}
+          aria-controls="menu-principal"
+          aria-expanded={!recolhido}
+          aria-label={recolhido ? "Expandir menu" : "Recolher menu"}
+          title={recolhido ? "Expandir menu" : "Recolher menu"}
+          onClick={() => gravarMenuRecolhido(!recolhido)}
+        >
+          <span aria-hidden="true">{recolhido ? "»" : "«"}</span>
+        </button>
         <button
           type="button"
           className={styles.menuButton}
@@ -70,8 +164,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
         >
           {menuOpen ? "Fechar" : "Menu"}
         </button>
-        <span className={styles.brand}>Fauna Silvestre</span>
-        <span className={styles.demoBadge}>Dados fictícios — demonstração</span>
+        <Link href="/" className={styles.marcaTopo} aria-label="SIGFAUNA MT — Visão geral">
+          <Logo className={styles.logoTopo} sizes="160px" />
+        </Link>
+        {sessao.situacao === "presente" ? (
+          <UsuarioAtual usuario={sessao.usuario} className={styles.operadorTopo} />
+        ) : null}
       </header>
 
       <nav
@@ -79,27 +177,19 @@ export default function AppShell({ children }: { children: ReactNode }) {
         aria-label="Navegação principal"
         className={`${styles.sidebar} ${menuOpen ? styles.sidebarOpen : ""}`}
       >
+        <Link href="/" className={styles.marcaMenu} aria-label="SIGFAUNA MT — Visão geral">
+          <span className={styles.recorteLogo}>
+            <Logo className={styles.logoMenu} sizes="220px" />
+          </span>
+        </Link>
         <Suspense fallback={<NavLinks pathname={null} onNavegar={fecharMenu} />}>
           <NavLinksComEndereco onNavegar={fecharMenu} />
         </Suspense>
-        <div className={styles.sidebarFooter}>
-          <button
-            type="button"
-            className={styles.restoreButton}
-            onClick={() => {
-              if (
-                window.confirm(
-                  "Restaurar os registros iniciais da demonstração? As alterações desta aba serão perdidas.",
-                )
-              ) {
-                restaurarDemonstracao();
-                fecharMenu();
-              }
-            }}
-          >
-            Restaurar demonstração
-          </button>
-        </div>
+        {sessao.situacao === "presente" ? (
+          <div className={styles.sidebarFooter}>
+            <UsuarioAtual usuario={sessao.usuario} className={styles.operadorMenu} />
+          </div>
+        ) : null}
       </nav>
 
       <main className={styles.content}>

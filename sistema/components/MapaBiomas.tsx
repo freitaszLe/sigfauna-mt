@@ -39,6 +39,7 @@ export default function MapaBiomas({
   // Cria o mapa uma vez, só no navegador, e o destrói ao sair da página.
   useEffect(() => {
     let cancelado = false;
+    let observador: ResizeObserver | null = null;
 
     import("leaflet").then((L) => {
       if (cancelado || !contenedor.current) return;
@@ -71,10 +72,15 @@ export default function MapaBiomas({
 
       mapa.current = instancia;
       setVersaoMapa((versao) => versao + 1);
+
+      // Recolher/expandir o menu muda a largura do mapa; o Leaflet precisa recalcular.
+      observador = new ResizeObserver(() => instancia.invalidateSize());
+      observador.observe(contenedor.current);
     });
 
     return () => {
       cancelado = true;
+      observador?.disconnect();
       mapa.current?.remove();
       mapa.current = null;
       camadaBiomas.current = null;
@@ -135,7 +141,7 @@ export default function MapaBiomas({
       ref={contenedor}
       className={styles.mapa}
       role="region"
-      aria-label="Mapa dos biomas de Mato Grosso com os pontos fictícios dos resgates filtrados"
+      aria-label="Mapa dos biomas de Mato Grosso com os pontos dos resgates filtrados"
     />
   );
 }

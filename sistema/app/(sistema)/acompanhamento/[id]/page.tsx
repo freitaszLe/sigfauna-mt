@@ -12,7 +12,7 @@ export default function FichaResgatePage() {
       fallback={
         <PageBlock title="Ficha do resgate">
           <p className={blockStyles.notice} role="status">
-            Carregando dados da sessão…
+            Carregando…
           </p>
         </PageBlock>
       }

@@ -1,6 +1,9 @@
 .shell {
+  --largura-menu: var(--sidebar-width);
   min-height: 100vh;
 }
+
+/* ---------- Barra superior ---------- */
 
 .topbar {
   position: fixed;
@@ -15,31 +18,71 @@
   color: var(--nav-text);
 }
 
-.brand {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-
-.demoBadge {
-  margin-left: auto;
-  padding: 2px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: var(--radius);
-  font-size: 12px;
-  white-space: nowrap;
-}
-
+.recolherButton,
 .menuButton {
-  display: none;
   padding: 4px 10px;
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius);
   background: transparent;
   color: var(--nav-text);
+  font-size: 15px;
+  line-height: 1.2;
   cursor: pointer;
 }
+
+.recolherButton:hover,
+.menuButton:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.menuButton {
+  display: none;
+}
+
+/* Logo na barra: só em telas menores, onde o menu lateral fica escondido */
+.marcaTopo {
+  display: none;
+}
+
+.operadorTopo,
+.operadorMenu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.operadorTopo {
+  margin-left: auto;
+}
+
+.operadorMenu {
+  display: none;
+  margin-bottom: 10px;
+}
+
+.operadorNome {
+  overflow: hidden;
+  max-width: 220px;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sairButton {
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+.sairButton:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Menu lateral ---------- */
 
 .sidebar {
   position: fixed;
@@ -47,15 +90,40 @@
   bottom: 0;
   left: 0;
   z-index: 10;
-  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  width: var(--largura-menu);
+  overflow-x: hidden;
   overflow-y: auto;
   background: var(--nav);
   color: var(--nav-text);
+  transition: width 0.15s ease;
+}
+
+/* Bloco branco com a logo grande: o verde-escuro da logo não tem contraste sobre o menu */
+.marcaMenu {
+  display: block;
+  margin: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.recorteLogo {
+  display: block;
+  overflow: hidden;
+}
+
+.logoMenu {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 8px 0;
+  padding: 4px 0 8px;
 }
 
 .navLink {
@@ -64,6 +132,7 @@
   gap: 10px;
   padding: 10px 16px;
   border-left: 4px solid transparent;
+  white-space: nowrap;
 }
 
 .navLink:hover {
@@ -76,38 +145,104 @@
   font-weight: 600;
 }
 
+.navIcon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+
 .sidebarFooter {
+  display: none;
   padding: 12px 16px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.restoreButton {
-  width: 100%;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--nav-text);
-  cursor: pointer;
-}
-
-.restoreButton:hover {
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.navIcon {
-  width: 18px;
-  text-align: center;
-}
-
 .content {
-  margin-left: var(--sidebar-width);
+  margin-left: var(--largura-menu);
   padding: calc(var(--topbar-height) + 20px) 20px 24px;
+  transition: margin-left 0.15s ease;
 }
+
+/* ---------- Menu recolhido (só a partir de 769px) ---------- */
+
+@media (min-width: 769px) {
+  .shell.shellRecolhido {
+    --largura-menu: 64px;
+  }
+
+  .shell.shellRecolhido .navTexto {
+    display: none;
+  }
+
+  .shell.shellRecolhido .navLink {
+    justify-content: center;
+    padding: 12px 0;
+  }
+
+  .shell.shellRecolhido .marcaMenu {
+    margin: 10px 8px;
+    padding: 4px;
+  }
+
+  /* Recolhido: mostra só o papagaio, recortado da esquerda da própria logo */
+  .shell.shellRecolhido .recorteLogo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .shell.shellRecolhido .logoMenu {
+    width: auto;
+    height: 40px;
+    max-width: none;
+  }
+
+  .shell.shellRecolhido .sidebarFooter {
+    padding: 12px 8px;
+  }
+
+}
+
+/* ---------- Telas menores ---------- */
 
 @media (max-width: 768px) {
+  .recolherButton,
+  .marcaMenu {
+    display: none;
+  }
+
   .menuButton {
     display: inline-block;
+  }
+
+  .marcaTopo {
+    display: inline-flex;
+    align-items: center;
+    height: 50px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .logoTopo {
+    display: block;
+    width: auto;
+    height: 44px;
+  }
+
+  .operadorTopo {
+    display: none;
+  }
+
+  .operadorMenu {
+    display: flex;
+  }
+
+  .sidebarFooter {
+    display: block;
   }
 
   .sidebar {
@@ -119,19 +254,11 @@
   }
 
   .sidebarOpen {
-    display: block;
+    display: flex;
   }
 
   .content {
     margin-left: 0;
     padding: calc(var(--topbar-height) + 12px) 12px 20px;
-  }
-}
-
-@media (max-width: 420px) {
-  .demoBadge {
-    font-size: 11px;
-    white-space: normal;
-    text-align: right;
   }
 }

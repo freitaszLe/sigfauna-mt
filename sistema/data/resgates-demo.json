@@ -2,7 +2,7 @@
   {
     "id": "r001",
     "protocolo": "FS-2026-0001",
-    "identificacao": "Indivíduo fictício 001",
+    "identificacao": "Macho adulto · anilha MT-0001",
     "especie": "Arara-canindé",
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
@@ -13,49 +13,73 @@
     },
     "dataResgate": "2026-07-01",
     "etapa": "Concluído",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-01T09:07:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-03T10:07:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "0.8",
+          "condicao": "Regular",
+          "ferimentos": "Sim",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em reabilitação",
         "dataHora": "2026-07-05T11:07:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em reabilitação",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-07T12:07:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "locomocao": "Adequado",
+          "alimentacao": "Sim",
+          "apto": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Aguardando destinação",
         "para": "Concluído",
         "dataHora": "2026-07-09T13:07:00-04:00",
-        "observacao": "Caso encerrado na demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Caso encerrado.",
+        "operador": "Operador 3",
+        "respostas": {
+          "destinacao": "Transferência",
+          "documento": "Termo nº 2026/001"
+        }
       }
     ]
   },
   {
     "id": "r002",
     "protocolo": "FS-2026-0002",
-    "identificacao": "Indivíduo fictício 002",
+    "identificacao": "Filhote fêmea · microchip MT-0002",
     "especie": "Bugio-preto",
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
@@ -66,49 +90,73 @@
     },
     "dataResgate": "2026-07-04",
     "etapa": "Concluído",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-04T10:14:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-06T11:14:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "23.2",
+          "condicao": "Ruim",
+          "ferimentos": "Não",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em reabilitação",
         "dataHora": "2026-07-08T12:14:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em reabilitação",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-10T13:14:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "locomocao": "Adequado",
+          "alimentacao": "Sim",
+          "apto": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Aguardando destinação",
         "para": "Concluído",
         "dataHora": "2026-07-12T14:14:00-04:00",
-        "observacao": "Caso encerrado na demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Caso encerrado.",
+        "operador": "Operador 1",
+        "respostas": {
+          "destinacao": "Permanência em cativeiro",
+          "documento": "Termo nº 2026/002"
+        }
       }
     ]
   },
   {
     "id": "r003",
     "protocolo": "FS-2026-0003",
-    "identificacao": "Indivíduo fictício 003",
+    "identificacao": "Filhote macho · anilha MT-0003",
     "especie": "Coruja-buraqueira",
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
@@ -119,42 +167,60 @@
     },
     "dataResgate": "2026-07-07",
     "etapa": "Concluído",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-07T11:21:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-09T12:21:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "0.5",
+          "condicao": "Boa",
+          "ferimentos": "Sim",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-11T13:21:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Não"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Aguardando destinação",
         "para": "Concluído",
         "dataHora": "2026-07-13T14:21:00-04:00",
-        "observacao": "Caso encerrado na demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Caso encerrado.",
+        "operador": "Operador 1",
+        "respostas": {
+          "destinacao": "Soltura",
+          "documento": "Termo nº 2026/003"
+        }
       }
     ]
   },
   {
     "id": "r004",
     "protocolo": "FS-2026-0004",
-    "identificacao": "Indivíduo fictício 004",
+    "identificacao": "Fêmea jovem · microchip MT-0004",
     "especie": "Jacaré-do-pantanal",
     "grupo": "Réptil",
     "biomaCodigo": "cerrado",
@@ -165,42 +231,60 @@
     },
     "dataResgate": "2026-07-10",
     "etapa": "Concluído",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-10T12:28:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-12T13:28:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "4.8",
+          "condicao": "Regular",
+          "ferimentos": "Não",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-14T14:28:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Não"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Aguardando destinação",
         "para": "Concluído",
         "dataHora": "2026-07-16T15:28:00-04:00",
-        "observacao": "Caso encerrado na demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Caso encerrado.",
+        "operador": "Operador 2",
+        "respostas": {
+          "destinacao": "Transferência",
+          "documento": "Termo nº 2026/004"
+        }
       }
     ]
   },
   {
     "id": "r005",
     "protocolo": "FS-2026-0005",
-    "identificacao": "Indivíduo fictício 005",
+    "identificacao": "Macho jovem · microchip MT-0005",
     "especie": "Capivara",
     "grupo": "Mamífero",
     "biomaCodigo": "pantanal",
@@ -211,42 +295,60 @@
     },
     "dataResgate": "2026-07-13",
     "etapa": "Concluído",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-13T13:35:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-15T14:35:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "26.1",
+          "condicao": "Ruim",
+          "ferimentos": "Sim",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-17T15:35:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Não"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Aguardando destinação",
         "para": "Concluído",
         "dataHora": "2026-07-19T16:35:00-04:00",
-        "observacao": "Caso encerrado na demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Caso encerrado.",
+        "operador": "Operador 3",
+        "respostas": {
+          "destinacao": "Permanência em cativeiro",
+          "documento": "Termo nº 2026/005"
+        }
       }
     ]
   },
   {
     "id": "r006",
     "protocolo": "FS-2026-0006",
-    "identificacao": "Indivíduo fictício 006",
+    "identificacao": "Fêmea adulta · anilha MT-0006",
     "especie": "Papagaio-verdadeiro",
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
@@ -257,49 +359,74 @@
     },
     "dataResgate": "2026-07-16",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-16T14:42:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-18T15:42:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "0.7",
+          "condicao": "Boa",
+          "ferimentos": "Não",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-07-20T16:42:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 3"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-07-22T08:42:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "procedimento": "Hidratação e observação",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em reabilitação",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-24T09:42:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "locomocao": "Adequado",
+          "alimentacao": "Sim",
+          "apto": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r007",
     "protocolo": "FS-2026-0007",
-    "identificacao": "Indivíduo fictício 007",
+    "identificacao": "Macho adulto · microchip MT-0007",
     "especie": "Jabuti-piranga",
     "grupo": "Réptil",
     "biomaCodigo": "amazonia",
@@ -310,49 +437,74 @@
     },
     "dataResgate": "2026-07-19",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-19T15:49:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-21T16:49:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "5.7",
+          "condicao": "Regular",
+          "ferimentos": "Sim",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-07-23T08:49:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 1"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-07-25T09:49:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "procedimento": "Remoção de corpo estranho",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em reabilitação",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-27T10:49:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "locomocao": "Adequado",
+          "alimentacao": "Sim",
+          "apto": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r008",
     "protocolo": "FS-2026-0008",
-    "identificacao": "Indivíduo fictício 008",
+    "identificacao": "Filhote fêmea · microchip MT-0008",
     "especie": "Lobo-guará",
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
@@ -363,49 +515,74 @@
     },
     "dataResgate": "2026-07-22",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-22T16:56:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-24T08:56:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "29.0",
+          "condicao": "Ruim",
+          "ferimentos": "Não",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-07-26T09:56:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 2"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-07-28T10:56:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "procedimento": "Curativo e limpeza de ferimento",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em reabilitação",
         "para": "Aguardando destinação",
         "dataHora": "2026-07-30T11:56:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "locomocao": "Adequado",
+          "alimentacao": "Sim",
+          "apto": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r009",
     "protocolo": "FS-2026-0009",
-    "identificacao": "Indivíduo fictício 009",
+    "identificacao": "Filhote macho · anilha MT-0009",
     "especie": "Tucano-toco",
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
@@ -416,49 +593,74 @@
     },
     "dataResgate": "2026-07-25",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-25T08:03:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-27T09:03:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "0.8",
+          "condicao": "Boa",
+          "ferimentos": "Sim",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-07-29T10:03:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 3"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-07-31T11:03:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "procedimento": "Imobilização de membro",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em reabilitação",
         "para": "Aguardando destinação",
         "dataHora": "2026-08-02T12:03:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "locomocao": "Adequado",
+          "alimentacao": "Sim",
+          "apto": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r010",
     "protocolo": "FS-2026-0010",
-    "identificacao": "Indivíduo fictício 010",
+    "identificacao": "Fêmea jovem · microchip MT-0010",
     "especie": "Jiboia",
     "grupo": "Réptil",
     "biomaCodigo": "pantanal",
@@ -469,35 +671,48 @@
     },
     "dataResgate": "2026-07-28",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-28T09:10:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-07-30T10:10:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "6.6",
+          "condicao": "Regular",
+          "ferimentos": "Não",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Aguardando destinação",
         "dataHora": "2026-08-01T11:10:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Não"
+        }
       }
     ]
   },
   {
     "id": "r011",
     "protocolo": "FS-2026-0011",
-    "identificacao": "Indivíduo fictício 011",
+    "identificacao": "Macho jovem · microchip MT-0011",
     "especie": "Tamanduá-bandeira",
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
@@ -508,35 +723,48 @@
     },
     "dataResgate": "2026-07-31",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-07-31T10:17:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-02T11:17:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "5.8",
+          "condicao": "Ruim",
+          "ferimentos": "Sim",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Aguardando destinação",
         "dataHora": "2026-08-04T12:17:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Não"
+        }
       }
     ]
   },
   {
     "id": "r012",
     "protocolo": "FS-2026-0012",
-    "identificacao": "Indivíduo fictício 012",
+    "identificacao": "Fêmea adulta · anilha MT-0012",
     "especie": "Arara-canindé",
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
@@ -547,35 +775,48 @@
     },
     "dataResgate": "2026-08-03",
     "etapa": "Aguardando destinação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-03T11:24:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-05T12:24:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "0.9",
+          "condicao": "Boa",
+          "ferimentos": "Não",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Aguardando destinação",
         "dataHora": "2026-08-07T13:24:00-04:00",
-        "observacao": "Aguardando decisão de destinação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Aguardando decisão de destinação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Não"
+        }
       }
     ]
   },
   {
     "id": "r013",
     "protocolo": "FS-2026-0013",
-    "identificacao": "Indivíduo fictício 013",
+    "identificacao": "Macho adulto · microchip MT-0013",
     "especie": "Bugio-preto",
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
@@ -586,35 +827,48 @@
     },
     "dataResgate": "2026-08-06",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-06T12:31:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-08T13:31:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "25.1",
+          "condicao": "Regular",
+          "ferimentos": "Sim",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em reabilitação",
         "dataHora": "2026-08-10T14:31:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r014",
     "protocolo": "FS-2026-0014",
-    "identificacao": "Indivíduo fictício 014",
+    "identificacao": "Filhote fêmea · anilha MT-0014",
     "especie": "Coruja-buraqueira",
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
@@ -625,35 +879,48 @@
     },
     "dataResgate": "2026-08-09",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-09T13:38:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-11T14:38:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "0.6",
+          "condicao": "Ruim",
+          "ferimentos": "Não",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em reabilitação",
         "dataHora": "2026-08-13T15:38:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r015",
     "protocolo": "FS-2026-0015",
-    "identificacao": "Indivíduo fictício 015",
+    "identificacao": "Filhote macho · microchip MT-0015",
     "especie": "Jacaré-do-pantanal",
     "grupo": "Réptil",
     "biomaCodigo": "pantanal",
@@ -664,35 +931,48 @@
     },
     "dataResgate": "2026-08-12",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-12T14:45:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-14T15:45:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "5.4",
+          "condicao": "Boa",
+          "ferimentos": "Sim",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em reabilitação",
         "dataHora": "2026-08-16T16:45:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r016",
     "protocolo": "FS-2026-0016",
-    "identificacao": "Indivíduo fictício 016",
+    "identificacao": "Fêmea jovem · microchip MT-0016",
     "especie": "Capivara",
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
@@ -703,35 +983,48 @@
     },
     "dataResgate": "2026-08-15",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-15T15:52:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-17T16:52:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "27.9",
+          "condicao": "Regular",
+          "ferimentos": "Não",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em reabilitação",
         "dataHora": "2026-08-19T08:52:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Não",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r017",
     "protocolo": "FS-2026-0017",
-    "identificacao": "Indivíduo fictício 017",
+    "identificacao": "Macho jovem · anilha MT-0017",
     "especie": "Papagaio-verdadeiro",
     "grupo": "Ave",
     "biomaCodigo": "amazonia",
@@ -742,42 +1035,61 @@
     },
     "dataResgate": "2026-08-18",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-18T16:59:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-20T08:59:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "0.7",
+          "condicao": "Ruim",
+          "ferimentos": "Sim",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-08-22T09:59:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 2"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-08-24T10:59:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 3",
+        "respostas": {
+          "procedimento": "Imobilização de membro",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r018",
     "protocolo": "FS-2026-0018",
-    "identificacao": "Indivíduo fictício 018",
+    "identificacao": "Fêmea adulta · microchip MT-0018",
     "especie": "Jabuti-piranga",
     "grupo": "Réptil",
     "biomaCodigo": "cerrado",
@@ -788,42 +1100,61 @@
     },
     "dataResgate": "2026-08-21",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-21T08:06:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-23T09:06:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "6.3",
+          "condicao": "Boa",
+          "ferimentos": "Não",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-08-25T10:06:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 3"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-08-27T11:06:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 1",
+        "respostas": {
+          "procedimento": "Hidratação e observação",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r019",
     "protocolo": "FS-2026-0019",
-    "identificacao": "Indivíduo fictício 019",
+    "identificacao": "Macho adulto · microchip MT-0019",
     "especie": "Lobo-guará",
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
@@ -834,42 +1165,61 @@
     },
     "dataResgate": "2026-08-24",
     "etapa": "Em reabilitação",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-24T09:13:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-26T10:13:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "4.8",
+          "condicao": "Regular",
+          "ferimentos": "Sim",
+          "comportamento": "Alerta"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-08-28T11:13:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 1"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em tratamento",
         "para": "Em reabilitação",
         "dataHora": "2026-08-30T12:13:00-04:00",
-        "observacao": "Encaminhado para reabilitação (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para reabilitação.",
+        "operador": "Operador 2",
+        "respostas": {
+          "procedimento": "Remoção de corpo estranho",
+          "evolucao": "Melhora",
+          "alta": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r020",
     "protocolo": "FS-2026-0020",
-    "identificacao": "Indivíduo fictício 020",
+    "identificacao": "Filhote fêmea · anilha MT-0020",
     "especie": "Tucano-toco",
     "grupo": "Ave",
     "biomaCodigo": "pantanal",
@@ -880,35 +1230,48 @@
     },
     "dataResgate": "2026-08-27",
     "etapa": "Em tratamento",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-27T10:20:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-08-29T11:20:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "0.9",
+          "condicao": "Ruim",
+          "ferimentos": "Não",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-08-31T12:20:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 2"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r021",
     "protocolo": "FS-2026-0021",
-    "identificacao": "Indivíduo fictício 021",
+    "identificacao": "Filhote macho · microchip MT-0021",
     "especie": "Jiboia",
     "grupo": "Réptil",
     "biomaCodigo": "amazonia",
@@ -919,35 +1282,48 @@
     },
     "dataResgate": "2026-08-30",
     "etapa": "Em tratamento",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-08-30T11:27:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-09-01T12:27:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "7.2",
+          "condicao": "Boa",
+          "ferimentos": "Sim",
+          "comportamento": "Apático"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-09-03T13:27:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 3"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 3",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r022",
     "protocolo": "FS-2026-0022",
-    "identificacao": "Indivíduo fictício 022",
+    "identificacao": "Fêmea jovem · microchip MT-0022",
     "especie": "Tamanduá-bandeira",
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
@@ -958,35 +1334,48 @@
     },
     "dataResgate": "2026-09-02",
     "etapa": "Em tratamento",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-02T12:34:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-09-04T13:34:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "7.6",
+          "condicao": "Regular",
+          "ferimentos": "Não",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-09-06T14:34:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 1"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 1",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r023",
     "protocolo": "FS-2026-0023",
-    "identificacao": "Indivíduo fictício 023",
+    "identificacao": "Macho jovem · anilha MT-0023",
     "especie": "Arara-canindé",
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
@@ -997,35 +1386,48 @@
     },
     "dataResgate": "2026-09-05",
     "etapa": "Em tratamento",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-05T13:41:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-09-07T14:41:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "1.0",
+          "condicao": "Ruim",
+          "ferimentos": "Sim",
+          "comportamento": "Agitado"
+        }
       },
       {
+        "tipo": "mudanca",
         "de": "Em triagem",
         "para": "Em tratamento",
         "dataHora": "2026-09-09T15:41:00-04:00",
-        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe fictícia.",
-        "operador": "Operador fictício 2"
+        "observacao": "Iniciado tratamento conforme escolha registrada pela equipe.",
+        "operador": "Operador 2",
+        "respostas": {
+          "cuidados": "Sim",
+          "condicionamento": "Sim"
+        }
       }
     ]
   },
   {
     "id": "r024",
     "protocolo": "FS-2026-0024",
-    "identificacao": "Indivíduo fictício 024",
+    "identificacao": "Fêmea adulta · microchip MT-0024",
     "especie": "Bugio-preto",
     "grupo": "Mamífero",
     "biomaCodigo": "cerrado",
@@ -1036,28 +1438,36 @@
     },
     "dataResgate": "2026-09-08",
     "etapa": "Em triagem",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-08T14:48:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-09-10T15:48:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 2"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 2",
+        "respostas": {
+          "peso": "26.9",
+          "condicao": "Boa",
+          "ferimentos": "Não",
+          "comportamento": "Alerta"
+        }
       }
     ]
   },
   {
     "id": "r025",
     "protocolo": "FS-2026-0025",
-    "identificacao": "Indivíduo fictício 025",
+    "identificacao": "Macho adulto · anilha MT-0025",
     "especie": "Coruja-buraqueira",
     "grupo": "Ave",
     "biomaCodigo": "pantanal",
@@ -1068,28 +1478,36 @@
     },
     "dataResgate": "2026-09-11",
     "etapa": "Em triagem",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-11T15:55:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-09-13T16:55:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 3"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 3",
+        "respostas": {
+          "peso": "0.7",
+          "condicao": "Regular",
+          "ferimentos": "Sim",
+          "comportamento": "Alerta"
+        }
       }
     ]
   },
   {
     "id": "r026",
     "protocolo": "FS-2026-0026",
-    "identificacao": "Indivíduo fictício 026",
+    "identificacao": "Filhote fêmea · microchip MT-0026",
     "especie": "Jacaré-do-pantanal",
     "grupo": "Réptil",
     "biomaCodigo": "amazonia",
@@ -1100,28 +1518,36 @@
     },
     "dataResgate": "2026-09-14",
     "etapa": "Em triagem",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-14T16:02:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       },
       {
+        "tipo": "mudanca",
         "de": "Recebido",
         "para": "Em triagem",
         "dataHora": "2026-09-16T08:02:00-04:00",
-        "observacao": "Encaminhado para triagem (registro fictício).",
-        "operador": "Operador fictício 1"
+        "observacao": "Encaminhado para triagem.",
+        "operador": "Operador 1",
+        "respostas": {
+          "peso": "6.0",
+          "condicao": "Ruim",
+          "ferimentos": "Não",
+          "comportamento": "Apático"
+        }
       }
     ]
   },
   {
     "id": "r027",
     "protocolo": "FS-2026-0027",
-    "identificacao": "Indivíduo fictício 027",
+    "identificacao": "Filhote macho · microchip MT-0027",
     "especie": "Capivara",
     "grupo": "Mamífero",
     "biomaCodigo": "amazonia",
@@ -1132,21 +1558,22 @@
     },
     "dataResgate": "2026-09-17",
     "etapa": "Recebido",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-17T08:09:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       }
     ]
   },
   {
     "id": "r028",
     "protocolo": "FS-2026-0028",
-    "identificacao": "Indivíduo fictício 028",
+    "identificacao": "Fêmea jovem · anilha MT-0028",
     "especie": "Papagaio-verdadeiro",
     "grupo": "Ave",
     "biomaCodigo": "cerrado",
@@ -1157,21 +1584,22 @@
     },
     "dataResgate": "2026-09-20",
     "etapa": "Recebido",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-20T09:16:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 2"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 2",
+        "tipo": "entrada"
       }
     ]
   },
   {
     "id": "r029",
     "protocolo": "FS-2026-0029",
-    "identificacao": "Indivíduo fictício 029",
+    "identificacao": "Macho jovem · microchip MT-0029",
     "especie": "Jabuti-piranga",
     "grupo": "Réptil",
     "biomaCodigo": "cerrado",
@@ -1182,21 +1610,22 @@
     },
     "dataResgate": "2026-09-23",
     "etapa": "Recebido",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-23T10:23:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 3"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 3",
+        "tipo": "entrada"
       }
     ]
   },
   {
     "id": "r030",
     "protocolo": "FS-2026-0030",
-    "identificacao": "Indivíduo fictício 030",
+    "identificacao": "Fêmea adulta · microchip MT-0030",
     "especie": "Lobo-guará",
     "grupo": "Mamífero",
     "biomaCodigo": "pantanal",
@@ -1207,14 +1636,15 @@
     },
     "dataResgate": "2026-09-26",
     "etapa": "Recebido",
-    "observacao": "Registro fictício criado para a atividade.",
+    "observacao": "",
     "historico": [
       {
         "de": null,
         "para": "Recebido",
         "dataHora": "2026-09-26T11:30:00-04:00",
-        "observacao": "Entrada registrada para demonstração.",
-        "operador": "Operador fictício 1"
+        "observacao": "Entrada registrada.",
+        "operador": "Operador 1",
+        "tipo": "entrada"
       }
     ]
   }

@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
-import AppShell from "@/components/AppShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Fauna Silvestre",
-    template: "%s · Fauna Silvestre",
+    default: "SIGFAUNA MT",
+    template: "%s · SIGFAUNA MT",
   },
   description:
-    "Sistema básico de recebimento, acompanhamento e distribuição regional de resgates de fauna — dados fictícios.",
+    "SIGFAUNA MT — gestão de fauna silvestre: recebimento, acompanhamento e distribuição de resgates por bioma de MT.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR">
-      <body>
-        <AppShell>{children}</AppShell>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

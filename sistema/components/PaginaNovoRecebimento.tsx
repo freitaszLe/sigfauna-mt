@@ -16,7 +16,7 @@ export default function PaginaNovoRecebimento() {
       {/* O formulário usa a data de hoje e os dados da sessão; só monta no navegador. */}
       {origem === "inicial" ? (
         <p className={blockStyles.notice} role="status">
-          Carregando dados da sessão…
+          Carregando…
         </p>
       ) : (
         <FormularioRecebimento onCancelar={voltarParaLista} onRegistrado={voltarParaLista} />

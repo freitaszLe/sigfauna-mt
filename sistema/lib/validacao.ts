@@ -3,6 +3,7 @@ import {
   ETAPAS,
   GRUPOS,
   METODOS_IDENTIFICACAO_BIOMA,
+  TIPOS_EVENTO,
   VERSAO_ESQUEMA,
   type EstadoArmazenado,
   type EventoHistorico,
@@ -23,14 +24,23 @@ function ehEtapa(valor: unknown): boolean {
   return ETAPAS.includes(valor as (typeof ETAPAS)[number]);
 }
 
+function ehRespostas(valor: unknown): boolean {
+  return (
+    valor === undefined ||
+    (ehObjeto(valor) && Object.values(valor).every((resposta) => ehTexto(resposta)))
+  );
+}
+
 function ehEvento(valor: unknown): valor is EventoHistorico {
   return (
     ehObjeto(valor) &&
+    TIPOS_EVENTO.includes(valor.tipo as (typeof TIPOS_EVENTO)[number]) &&
     (valor.de === null || ehEtapa(valor.de)) &&
     ehEtapa(valor.para) &&
     ehTexto(valor.dataHora) &&
     ehTexto(valor.observacao) &&
-    ehTexto(valor.operador)
+    ehTexto(valor.operador) &&
+    ehRespostas(valor.respostas)
   );
 }
 
