@@ -97,3 +97,28 @@
   justify-content: space-between;
   gap: 8px;
 }
+
+/* Resumo do ponto marcado no mapa do cadastro */
+.resumoPonto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-alt);
+}
+
+/* Latitude e longitude digitadas no cadastro */
+.coordenadas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px 12px;
+}
+
+.coordenadas .field {
+  flex: 1 1 140px;
+}

@@ -145,6 +145,72 @@
   font-weight: 600;
 }
 
+/* Acompanhamento com submenu recolhível */
+.linhaComSubmenu {
+  display: flex;
+  align-items: stretch;
+}
+
+.linhaComSubmenu .navLink {
+  flex: 1;
+  min-width: 0;
+}
+
+.botaoSubmenu {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+.botaoSubmenu:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.botaoSubmenu svg {
+  transition: transform 0.15s ease;
+}
+
+.botaoSubmenuAberto svg {
+  transform: rotate(180deg);
+}
+
+.sidebar ul.submenu {
+  padding: 2px 0 6px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.subLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px 7px 38px;
+  border-left: 4px solid transparent;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.subLink:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.subLinkAtivo {
+  border-left-color: #ffffff;
+  background: rgba(0, 0, 0, 0.22);
+  font-weight: 600;
+}
+
+.subIcone {
+  display: inline-flex;
+  flex: none;
+  opacity: 0.9;
+}
+
 .navIcon {
   display: inline-flex;
   flex: none;
@@ -173,7 +239,9 @@
     --largura-menu: 64px;
   }
 
-  .shell.shellRecolhido .navTexto {
+  .shell.shellRecolhido .navTexto,
+  .shell.shellRecolhido .submenu,
+  .shell.shellRecolhido .botaoSubmenu {
     display: none;
   }
 

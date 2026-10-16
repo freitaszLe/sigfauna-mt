@@ -54,3 +54,9 @@
   color: var(--text-muted);
   font-size: 12px;
 }
+
+/* Números alinhados (coordenadas) */
+.numero {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

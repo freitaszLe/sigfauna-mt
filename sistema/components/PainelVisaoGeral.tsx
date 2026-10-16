@@ -9,7 +9,9 @@ import {
 import { useResgates } from "@/lib/armazenamento";
 import { nomeDoBioma } from "@/lib/dados";
 import { biomaEfetivo } from "@/lib/geo";
-import GraficoBarras from "./GraficoBarras";
+import { COR_DO_BIOMA } from "./coresBiomas";
+import { CartaoBarras, CartaoRosca, COR_DO_GRUPO } from "./GraficosPainel";
+import graficoStyles from "./GraficosPainel.module.css";
 import blockStyles from "./PageBlock.module.css";
 import RecebimentosTable from "./RecebimentosTable";
 import StatCard from "./StatCard";
@@ -39,37 +41,35 @@ export default function PainelVisaoGeral() {
         <StatCard label="Concluídos" value={resumo.concluidos} tone="success" />
       </div>
 
-      <h2 className={blockStyles.sectionTitle}>
-        Resgates por bioma do local do resgate{" "}
-        <span className={blockStyles.sectionNote}>
-          ({calculados} de {resumo.total} calculados pela coordenada
-          {calculados < resumo.total ? "; os demais pelo bioma informado" : ""};{" "}
-          {divergentes === 0
-            ? "nenhuma divergência com o registrado"
-            : `${divergentes} divergência(s) com o registrado`}
-          )
-        </span>
-      </h2>
-      <GraficoBarras
-        titulo="Resgates por bioma"
-        dados={contarPorBioma(resgates).map((item) => ({
-          rotulo: nomeDoBioma(item.bioma),
-          total: item.total,
-        }))}
-      />
+      <h2 className={blockStyles.sectionTitle}>Distribuição dos resgates</h2>
+      <div className={graficoStyles.grade}>
+        <CartaoBarras
+          titulo="Resgates por bioma"
+          subtitulo={`${calculados} de ${resumo.total} calculados pela coordenada · ${
+            divergentes === 0 ? "nenhuma divergência" : `${divergentes} divergência(s)`
+          }`}
+          total={resumo.total}
+          dados={contarPorBioma(resgates).map((item) => ({
+            rotulo: nomeDoBioma(item.bioma),
+            total: item.total,
+            cor: COR_DO_BIOMA[item.bioma],
+          }))}
+        />
+        <CartaoRosca
+          titulo="Resgates por grupo"
+          subtitulo="Aves, mamíferos e répteis"
+          total={resumo.total}
+          dados={contarPorGrupo(resgates).map((item) => ({
+            rotulo: item.grupo,
+            total: item.total,
+            cor: COR_DO_GRUPO[item.grupo],
+          }))}
+        />
+      </div>
       <p className={blockStyles.sectionNote}>
         O bioma indica o local do resgate. Não comprova a origem natural do animal nem autoriza
         soltura.
       </p>
-
-      <h2 className={blockStyles.sectionTitle}>Resgates por grupo</h2>
-      <GraficoBarras
-        titulo="Resgates por grupo"
-        dados={contarPorGrupo(resgates).map((item) => ({
-          rotulo: item.grupo,
-          total: item.total,
-        }))}
-      />
 
       <h2 className={blockStyles.sectionTitle}>Últimos recebimentos</h2>
       <RecebimentosTable

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useCallback, useState, type FormEvent } from "react";
 import {
   criarResgate,
   dataLocal,
@@ -12,9 +12,12 @@ import {
   type ErrosRecebimento,
 } from "@/lib/cadastro";
 import { atualizarResgates, useResgates } from "@/lib/armazenamento";
-import { CATALOGO_BIOMAS } from "@/lib/dados";
+import { biomaPorCoordenada } from "@/lib/geo";
+import { CATALOGO_BIOMAS, nomeDoBioma } from "@/lib/dados";
 import { rotuloOperador, useUsuario } from "@/lib/operador";
-import { GRUPOS } from "@/lib/types";
+import { GRUPOS, type BiomaCodigo, type CoordenadaFicticia } from "@/lib/types";
+import MapaSelecaoPonto from "./MapaSelecaoPonto";
+import { formatarCoordenada } from "./TabelaResgates";
 import blockStyles from "./PageBlock.module.css";
 import styles from "./Formulario.module.css";
 
@@ -27,6 +30,22 @@ const ROTULOS: Record<keyof EntradaRecebimento, string> = {
   dataResgate: "Data do resgate",
   observacao: "Observação",
 };
+
+/** Número digitado com vírgula ou ponto decimal; null se não for um número. */
+function lerNumero(texto: string): number | null {
+  const limpo = texto.trim().replace(",", ".");
+  if (!/^-?\d+(\.\d+)?$/.test(limpo)) return null;
+  return Number(limpo);
+}
+
+/** Até 4 casas decimais: a coordenada é fictícia, não precisa de mais precisão. */
+function arredondar(valor: number): number {
+  return Math.round(valor * 10000) / 10000;
+}
+
+function numeroBR(valor: number): string {
+  return String(valor).replace(".", ",");
+}
 
 type FormularioRecebimentoProps = {
   onCancelar: () => void;
@@ -44,6 +63,11 @@ export default function FormularioRecebimento({
     protocolo: proximoProtocolo(resgates, new Date().getFullYear()),
   }));
   const [erros, setErros] = useState<ErrosRecebimento>({});
+  const [ponto, setPonto] = useState<CoordenadaFicticia | null>(null);
+  const [avisoPonto, setAvisoPonto] = useState<string | null>(null);
+  // Coordenadas digitadas (aceitam vírgula ou ponto decimal); o clique no mapa também as preenche.
+  const [latTexto, setLatTexto] = useState("");
+  const [lngTexto, setLngTexto] = useState("");
   const hoje = dataLocal(new Date());
   const especies = [...new Set(resgates.map((resgate) => resgate.especie))].sort((a, b) =>
     a.localeCompare(b, "pt-BR"),
@@ -74,7 +98,10 @@ export default function FormularioRecebimento({
 
     const rotulo =
       sessaoUsuario.situacao === "presente" ? rotuloOperador(sessaoUsuario.usuario) : undefined;
-    atualizarResgates((atuais) => [...atuais, criarResgate(entrada, atuais, new Date(), rotulo)]);
+    atualizarResgates((atuais) => [
+      ...atuais,
+      criarResgate(entrada, atuais, new Date(), rotulo, ponto),
+    ]);
 
     await Swal.fire({
       title: "Resgate registrado",
@@ -83,6 +110,50 @@ export default function FormularioRecebimento({
       confirmButtonText: "OK",
     });
     onRegistrado(protocolo);
+  }
+
+  const escolherPonto = useCallback((novo: CoordenadaFicticia, bioma: BiomaCodigo) => {
+    setPonto(novo);
+    setAvisoPonto(null);
+    setLatTexto(numeroBR(novo.lat));
+    setLngTexto(numeroBR(novo.lng));
+    setEntrada((atual) => ({ ...atual, biomaCodigo: bioma }));
+    // Remove o erro do bioma, se havia; uma chave com valor vazio ainda apareceria no resumo.
+    setErros((atuais) => {
+      const demais = { ...atuais };
+      delete demais.biomaCodigo;
+      return demais;
+    });
+  }, []);
+
+  const pontoForaDeMT = useCallback(() => {
+    setAvisoPonto("O ponto precisa ficar dentro de Mato Grosso. Clique em um dos biomas.");
+  }, []);
+
+  /** Marca o ponto a partir das coordenadas digitadas. */
+  function marcarDigitado() {
+    const lat = lerNumero(latTexto);
+    const lng = lerNumero(lngTexto);
+    if (lat === null || lng === null) {
+      setAvisoPonto("Informe latitude e longitude em graus decimais (ex.: -14,125 e -54,722).");
+      return;
+    }
+    const novo = { lat: arredondar(lat), lng: arredondar(lng) };
+    const bioma = biomaPorCoordenada(novo.lat, novo.lng);
+    if (!bioma) {
+      setAvisoPonto(
+        "Essa coordenada fica fora de Mato Grosso. Em MT, a latitude vai de cerca de -7 a -18 e a longitude de -50 a -62.",
+      );
+      return;
+    }
+    escolherPonto(novo, bioma);
+  }
+
+  function removerPonto() {
+    setPonto(null);
+    setAvisoPonto(null);
+    setLatTexto("");
+    setLngTexto("");
   }
 
   function propsDoCampo(campo: keyof EntradaRecebimento) {
@@ -167,11 +238,89 @@ export default function FormularioRecebimento({
           {erroDoCampo("grupo")}
         </div>
 
+        <div className={`${styles.field} ${styles.fieldWide}`}>
+          <span className={styles.label} id="rotulo-ponto">
+            Ponto fictício do resgate (opcional)
+          </span>
+          <span className={styles.hint}>
+            Clique no mapa ou digite a latitude e a longitude para marcar onde o animal foi
+            resgatado. O bioma é calculado pelo ponto,
+            com a malha oficial do IBGE. A coordenada é fictícia; não informe município nem
+            endereço.
+          </span>
+          <MapaSelecaoPonto ponto={ponto} onEscolher={escolherPonto} onForaDeMT={pontoForaDeMT} />
+          <div className={styles.coordenadas}>
+            <div className={styles.field}>
+              <label htmlFor="campo-latitude" className={styles.label}>
+                Latitude
+              </label>
+              <input
+                id="campo-latitude"
+                className={styles.input}
+                inputMode="decimal"
+                placeholder="Ex.: -14,125"
+                autoComplete="off"
+                value={latTexto}
+                onChange={(e) => setLatTexto(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    marcarDigitado();
+                  }
+                }}
+              />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="campo-longitude" className={styles.label}>
+                Longitude
+              </label>
+              <input
+                id="campo-longitude"
+                className={styles.input}
+                inputMode="decimal"
+                placeholder="Ex.: -54,722"
+                autoComplete="off"
+                value={lngTexto}
+                onChange={(e) => setLngTexto(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    marcarDigitado();
+                  }
+                }}
+              />
+            </div>
+            <button type="button" className={styles.secondaryButton} onClick={marcarDigitado}>
+              Marcar ponto
+            </button>
+          </div>
+          <div className={styles.resumoPonto} aria-live="polite">
+            {ponto ? (
+              <>
+                <span>
+                  Ponto marcado: <strong>{formatarCoordenada(ponto)}</strong> · bioma calculado:{" "}
+                  <strong>{nomeDoBioma(entrada.biomaCodigo as BiomaCodigo)}</strong>
+                </span>
+                <button type="button" className={styles.secondaryButton} onClick={removerPonto}>
+                  Remover ponto
+                </button>
+              </>
+            ) : (
+              <span>Nenhum ponto marcado: escolha o bioma na lista abaixo.</span>
+            )}
+          </div>
+          {avisoPonto ? (
+            <span className={styles.error} role="alert">
+              {avisoPonto}
+            </span>
+          ) : null}
+        </div>
+
         <div className={styles.field}>
           <label htmlFor="campo-biomaCodigo" className={styles.label}>
             Bioma do local do resgate <span className={styles.required}>*</span>
           </label>
-          <select {...propsDoCampo("biomaCodigo")}>
+          <select {...propsDoCampo("biomaCodigo")} disabled={ponto !== null}>
             <option value="">Selecione</option>
             {CATALOGO_BIOMAS.map((bioma) => (
               <option key={bioma.codigo} value={bioma.codigo}>
@@ -180,8 +329,10 @@ export default function FormularioRecebimento({
             ))}
           </select>
           <span className={styles.hint}>
-            Gravado como escolha manual. Não comprova a origem natural do animal nem autoriza
-            soltura.
+            {ponto
+              ? "Calculado pelo ponto marcado. Para escolher à mão, remova o ponto."
+              : "Sem ponto, é gravado como escolha manual."}{" "}
+            Não comprova a origem natural do animal nem autoriza soltura.
           </span>
           {erroDoCampo("biomaCodigo")}
         </div>

@@ -44,5 +44,12 @@ test.describe("Cadastro e recarga", () => {
     await page.reload();
     await expect(page.getByText(/de 31 resgates$/)).toHaveText("31 de 31 resgates");
     await expect(page.getByRole("cell", { name: protocolo, exact: true })).toBeVisible();
+
+    // Bioma escolhido no cadastro, sem coordenada: aparece no filtro "Escolhido no cadastro".
+    await page.locator("#filtro-metodo").selectOption("manual");
+    await expect(page.getByText(/de 31 resgates$/)).toHaveText("1 de 31 resgates");
+    const linha = page.getByRole("row").filter({ hasText: protocolo });
+    await expect(linha).toContainText("Sem coordenada");
+    await expect(linha).toContainText("manual");
   });
 });

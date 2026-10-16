@@ -10,9 +10,15 @@ import {
   temFiltroAtivo,
   type FiltrosResgates,
 } from "@/lib/filtros";
-import { ETAPAS, GRUPOS, type Resgate } from "@/lib/types";
-import RecebimentosTable from "./RecebimentosTable";
+import { GRUPOS, METODOS_IDENTIFICACAO_BIOMA, type MetodoIdentificacaoBioma, type Resgate } from "@/lib/types";
+import TabelaResgates from "./TabelaResgates";
 import styles from "./Formulario.module.css";
+
+const ROTULO_METODO: Record<MetodoIdentificacaoBioma, string> = {
+  calculado: "Calculado pela coordenada",
+  manual: "Escolhido no cadastro",
+  simulado: "Simulado (exemplos)",
+};
 
 type ListaResgatesProps = {
   resgates: readonly Resgate[];
@@ -83,24 +89,23 @@ export default function ListaResgates({ resgates }: ListaResgatesProps) {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="filtro-etapa" className={styles.label}>
-            Etapa atual
+          <label htmlFor="filtro-metodo" className={styles.label}>
+            Identificação do bioma
           </label>
           <select
-            id="filtro-etapa"
+            id="filtro-metodo"
             className={styles.input}
-            value={filtros.etapa}
-            onChange={(evento) => alterar("etapa", evento.target.value as FiltrosResgates["etapa"])}
+            value={filtros.metodo}
+            onChange={(evento) => alterar("metodo", evento.target.value as FiltrosResgates["metodo"])}
           >
             <option value="">Todas</option>
-            {ETAPAS.map((etapa) => (
-              <option key={etapa} value={etapa}>
-                {etapa}
+            {METODOS_IDENTIFICACAO_BIOMA.map((metodo) => (
+              <option key={metodo} value={metodo}>
+                {ROTULO_METODO[metodo]}
               </option>
             ))}
           </select>
         </div>
-
         <div className={styles.field}>
           <label htmlFor="filtro-data-inicial" className={styles.label}>
             Resgate de
@@ -152,10 +157,9 @@ export default function ListaResgates({ resgates }: ListaResgatesProps) {
         ) : null}
       </div>
 
-      <RecebimentosTable
+      <TabelaResgates
         key={JSON.stringify(filtros)}
         resgates={encontrados}
-        legenda="Resgates registrados, do mais recente para o mais antigo"
         mensagemVazia={
           resgates.length === 0
             ? "Nenhum resgate registrado."

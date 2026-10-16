@@ -1,0 +1,151 @@
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--nav);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.titulo {
+  font-size: 16px;
+}
+
+.subtitulo {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.amostra {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.valor {
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.valor small {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ---------- Barras ---------- */
+
+.barras {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.linhaBarra {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.rotuloBarra {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trilha {
+  height: 18px;
+  overflow: hidden;
+  background: #eef1f4;
+  border-radius: 9px;
+}
+
+.barra {
+  display: block;
+  height: 100%;
+  border-radius: 9px;
+}
+
+/* ---------- Rosca ---------- */
+
+.rosca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.svgRosca {
+  flex: none;
+  width: 150px;
+  height: 150px;
+}
+
+.totalRosca {
+  fill: var(--text);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.legendaTotal {
+  fill: var(--text-muted);
+  font-size: 3.6px;
+}
+
+.legenda {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 160px;
+  list-style: none;
+}
+
+.itemLegenda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.itemLegenda:last-child {
+  border-bottom: 0;
+}
+
+.rotuloLegenda {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .linhaBarra {
+    grid-template-columns: 92px 1fr auto;
+    gap: 8px;
+  }
+
+  .rosca {
+    justify-content: center;
+  }
+}

@@ -1,4 +1,12 @@
-import { BIOMAS, GRUPOS, type BiomaCodigo, type Grupo, type Resgate } from "./types";
+import { biomaPorCoordenada } from "./geo";
+import {
+  BIOMAS,
+  GRUPOS,
+  type BiomaCodigo,
+  type CoordenadaFicticia,
+  type Grupo,
+  type Resgate,
+} from "./types";
 
 /** Valores digitados no formulário, ainda sem validação. */
 export type EntradaRecebimento = {
@@ -123,23 +131,28 @@ function proximoId(resgates: readonly Resgate[]): string {
   return `r${String(maior + 1).padStart(3, "0")}`;
 }
 
-/** Monta o resgate a partir de uma entrada já validada. */
+/**
+ * Monta o resgate a partir de uma entrada já validada. Com ponto fictício marcado no mapa,
+ * o bioma vem da malha oficial ("calculado"); sem ponto, vale a escolha manual.
+ */
 export function criarResgate(
   entrada: EntradaRecebimento,
   resgates: readonly Resgate[],
   agora: Date,
   operador: string = OPERADOR_PADRAO,
+  coordenada: CoordenadaFicticia | null = null,
 ): Resgate {
   const observacao = entrada.observacao.trim();
+  const biomaDoPonto = coordenada ? biomaPorCoordenada(coordenada.lat, coordenada.lng) : null;
   return {
     id: proximoId(resgates),
     protocolo: normalizarProtocolo(entrada.protocolo),
     identificacao: entrada.identificacao.trim(),
     especie: entrada.especie.trim(),
     grupo: entrada.grupo as Grupo,
-    biomaCodigo: entrada.biomaCodigo as BiomaCodigo,
-    metodoIdentificacaoBioma: "manual",
-    coordenadaFicticia: null,
+    biomaCodigo: biomaDoPonto ?? (entrada.biomaCodigo as BiomaCodigo),
+    metodoIdentificacaoBioma: biomaDoPonto ? "calculado" : "manual",
+    coordenadaFicticia: biomaDoPonto ? coordenada : null,
     dataResgate: entrada.dataResgate,
     etapa: "Recebido",
     observacao,

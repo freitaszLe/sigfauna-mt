@@ -15,3 +15,14 @@
     height: 320px;
   }
 }
+
+/* Mapa do cadastro: menor e com cursor de mira */
+.mapaCadastro {
+  height: 320px;
+  cursor: crosshair;
+}
+
+.mapaCadastro :global(.leaflet-container),
+.mapaCadastro:global(.leaflet-container) {
+  cursor: crosshair;
+}
