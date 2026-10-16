@@ -1,0 +1,30 @@
+.badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Texto escuro no ciano e no amarelo para manter contraste */
+.info {
+  background: var(--info);
+  color: #0b2830;
+}
+
+.warning {
+  background: var(--warning);
+  color: #212529;
+}
+
+.danger {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+/* Verde mais escuro que --success para atingir contraste com texto branco */
+.success {
+  background: #1e7e34;
+  color: #ffffff;
+}
