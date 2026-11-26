@@ -6,21 +6,22 @@ test.describe("Tela de entrada", () => {
     await expect(page).toHaveURL(/\/entrar$/);
   });
 
-  test("e-mail ou senha errados mostram mensagem e não entram", async ({ page }) => {
+  test("a tela avisa que é um protótipo", async ({ page }) => {
     await page.goto("/entrar");
-    await page.getByLabel("E-mail").fill("equipe@exemplo.test");
-    await page.getByLabel("Senha").fill("senha-errada");
+    await expect(page.getByRole("note")).toContainText("Protótipo");
+  });
+
+  test("campos vazios pedem o e-mail e a senha", async ({ page }) => {
+    await page.goto("/entrar");
     await page.getByRole("button", { name: "Entrar" }).click();
-    await expect(page.getByRole("alert").filter({ hasText: "E-mail ou senha incorretos." })).toBeVisible();
+    await expect(page.getByRole("alert").filter({ hasText: "Informe o e-mail e a senha." })).toBeVisible();
     await expect(page).toHaveURL(/\/entrar$/);
   });
 
-  test("credencial do projeto entra no sistema", async ({ page }) => {
-    const senha = process.env.E2E_SENHA;
-    test.skip(!senha, "E2E_SENHA não definida (.env.local fora do Git)");
+  test("qualquer e-mail e senha entram no sistema", async ({ page }) => {
     await page.goto("/entrar");
-    await page.getByLabel("E-mail").fill("admin@admin.com");
-    await page.getByLabel("Senha").fill(senha!);
+    await page.getByLabel("E-mail").fill("qualquer@exemplo.test");
+    await page.getByLabel("Senha").fill("qualquer-coisa");
     await page.getByRole("button", { name: "Entrar" }).click();
     await expect(page).toHaveURL(/\/$/);
     await expect(page.getByRole("heading", { name: "Indicadores" })).toBeVisible();

@@ -7,6 +7,8 @@ import { nomeDoBioma } from "@/lib/dados";
 import { biomaEfetivo, LIMITE_MT, MALHA_BIOMAS, type PropriedadesBioma } from "@/lib/geo";
 import type { BiomaCodigo, Resgate } from "@/lib/types";
 import { COR_DO_BIOMA } from "./coresBiomas";
+import ControleCamadas from "./ControleCamadas";
+import { useCamadasSema } from "./useCamadasSema";
 import styles from "./MapaBiomas.module.css";
 
 type MapaBiomasProps = {
@@ -31,6 +33,7 @@ export default function MapaBiomas({
   // Muda a cada criação do mapa; a página pode ser ocultada e reexibida (cacheComponents),
   // o que destrói e recria o Leaflet sem desmontar o estado do componente.
   const [versaoMapa, setVersaoMapa] = useState(0);
+  const camadas = useCamadasSema(mapa, leaflet, versaoMapa, []);
 
   useEffect(() => {
     aoSelecionar.current = onSelecionar;
@@ -137,11 +140,14 @@ export default function MapaBiomas({
   }, [versaoMapa, contagens, pontos, selecionado]);
 
   return (
-    <div
-      ref={contenedor}
-      className={styles.mapa}
-      role="region"
-      aria-label="Mapa dos biomas de Mato Grosso com os pontos dos resgates filtrados"
-    />
+    <>
+      <div
+        ref={contenedor}
+        className={styles.mapa}
+        role="region"
+        aria-label="Mapa dos biomas de Mato Grosso com os pontos dos resgates filtrados"
+      />
+      <ControleCamadas ligadas={camadas.ligadas} onAlternar={camadas.alternar} carregando={camadas.carregando} />
+    </>
   );
 }

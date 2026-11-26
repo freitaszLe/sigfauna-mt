@@ -60,3 +60,9 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
+.animal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

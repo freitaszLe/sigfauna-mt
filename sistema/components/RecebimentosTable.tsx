@@ -7,6 +7,7 @@ import BotaoDetalhes from "./BotaoDetalhes";
 import Paginacao, { usePaginacao } from "./Paginacao";
 import StatusBadge from "./StatusBadge";
 import { TOM_DA_ETAPA } from "./etapas";
+import FotoAnimal from "./FotoAnimal";
 import styles from "./RecebimentosTable.module.css";
 
 type RecebimentosTableProps = {
@@ -50,9 +51,14 @@ export default function RecebimentosTable({
                 <tr key={resgate.id}>
                   <td>{resgate.protocolo}</td>
                   <td>
-                    {resgate.especie}
-                    <span className={styles.secondary}>
-                      {resgate.grupo} · {resgate.identificacao}
+                    <span className={styles.animal}>
+                      <FotoAnimal especie={resgate.especie} />
+                      <span>
+                        {resgate.especie}
+                        <span className={styles.secondary}>
+                          {resgate.grupo} · {resgate.identificacao}
+                        </span>
+                      </span>
                     </span>
                   </td>
                   <td>

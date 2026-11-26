@@ -22,6 +22,8 @@ import {
 import { rotuloOperador, useUsuario } from "@/lib/operador";
 import type { Etapa, EventoHistorico, Resgate } from "@/lib/types";
 import BiomaInfo from "./BiomaInfo";
+import FotoAnimal from "./FotoAnimal";
+import MapaSelecaoPonto from "./MapaSelecaoPonto";
 import PageBlock from "./PageBlock";
 import Paginacao, { usePaginacao } from "./Paginacao";
 import blockStyles from "./PageBlock.module.css";
@@ -64,6 +66,20 @@ export default function FichaResgate() {
         das respostas e precisa ser confirmada; não é diagnóstico nem autoriza soltura.
       </p>
 
+      <div className={styles.cabecalho}>
+        <figure className={styles.figura}>
+          <FotoAnimal especie={resgate.especie} tamanho="grande" />
+          <figcaption>Foto de exemplo da espécie (iNaturalist, CC0)</figcaption>
+        </figure>
+        <div>
+          <p className={styles.protocolo}>Nº de registro</p>
+          <p className={styles.titulo}>{resgate.protocolo}</p>
+          <p>
+            <strong>{resgate.especie}</strong> · {resgate.grupo}
+          </p>
+        </div>
+      </div>
+
       <dl className={styles.dados}>
         <div>
           <dt>Etapa atual</dt>
@@ -96,6 +112,18 @@ export default function FichaResgate() {
           <dd>{resgate.observacao || "—"}</dd>
         </div>
       </dl>
+
+      {resgate.coordenadaFicticia ? (
+        <section aria-label="Local do resgate" className={styles.local}>
+          <h2 className={blockStyles.sectionTitle}>Local do resgate</h2>
+          <MapaSelecaoPonto
+            ponto={resgate.coordenadaFicticia}
+            somenteLeitura
+            onEscolher={() => {}}
+            onForaDeMT={() => {}}
+          />
+        </section>
+      ) : null}
 
       {/* key reinicia as abas e o formulário quando a etapa muda */}
       <AbasDeAvaliacao key={resgate.etapa} resgate={resgate} />

@@ -5,6 +5,7 @@ import type { CoordenadaFicticia, Resgate } from "@/lib/types";
 import BiomaInfo from "./BiomaInfo";
 import BotaoDetalhes from "./BotaoDetalhes";
 import Paginacao, { usePaginacao } from "./Paginacao";
+import FotoAnimal from "./FotoAnimal";
 import styles from "./RecebimentosTable.module.css";
 
 /** Coordenada fictícia com vírgula decimal (padrão brasileiro). */
@@ -56,8 +57,13 @@ export default function TabelaResgates({ resgates, mensagemVazia }: TabelaResgat
                 <tr key={resgate.id}>
                   <td>{resgate.protocolo}</td>
                   <td>
-                    {resgate.especie}
-                    <span className={styles.secondary}>{resgate.identificacao}</span>
+<span className={styles.animal}>
+                      <FotoAnimal especie={resgate.especie} />
+                      <span>
+                        {resgate.especie}
+                        <span className={styles.secondary}>{resgate.identificacao}</span>
+                      </span>
+                    </span>
                   </td>
                   <td>{resgate.grupo}</td>
                   <td>

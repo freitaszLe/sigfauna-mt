@@ -1,0 +1,68 @@
+{
+  "arara-caninde": {
+    "autor": "ninawenoli",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/71559435",
+    "especie": "Ara ararauna"
+  },
+  "bugio-preto": {
+    "autor": "paulomascaretti",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/144739389",
+    "especie": "Alouatta caraya"
+  },
+  "coruja-buraqueira": {
+    "autor": "ninawenoli",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/311327055",
+    "especie": "Athene cunicularia"
+  },
+  "jacare-do-pantanal": {
+    "autor": "demianlescano",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/223437859",
+    "especie": "Caiman yacare"
+  },
+  "capivara": {
+    "autor": "paulomascaretti",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/137581633",
+    "especie": "Hydrochoerus hydrochaeris"
+  },
+  "papagaio-verdadeiro": {
+    "autor": "henrya",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/305929614",
+    "especie": "Amazona aestiva"
+  },
+  "jabuti-piranga": {
+    "autor": "filipeprates",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/253212433",
+    "especie": "Chelonoidis carbonarius"
+  },
+  "lobo-guara": {
+    "autor": "w_endo",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/121541639",
+    "especie": "Chrysocyon brachyurus"
+  },
+  "tucano-toco": {
+    "autor": "paulomascaretti",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/143502779",
+    "especie": "Ramphastos toco"
+  },
+  "jiboia": {
+    "autor": "filipeprates",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/281482487",
+    "especie": "Boa constrictor"
+  },
+  "tamandua-bandeira": {
+    "autor": "ninawenoli",
+    "licenca": "CC0 1.0",
+    "fonte": "https://www.inaturalist.org/observations/149797595",
+    "especie": "Myrmecophaga tridactyla"
+  }
+}
