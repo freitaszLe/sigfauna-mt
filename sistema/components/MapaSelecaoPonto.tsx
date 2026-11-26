@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { biomaPorCoordenada, LIMITE_MT, MALHA_BIOMAS, type PropriedadesBioma } from "@/lib/geo";
 import type { BiomaCodigo, CoordenadaFicticia } from "@/lib/types";
 import { COR_DO_BIOMA } from "./coresBiomas";
+import ControleCamadas from "./ControleCamadas";
+import QuadroGeografico from "./QuadroGeografico";
+import { useCamadasSema } from "./useCamadasSema";
 import styles from "./MapaBiomas.module.css";
 
 type MapaSelecaoPontoProps = {
@@ -14,6 +17,8 @@ type MapaSelecaoPontoProps = {
   onEscolher: (ponto: CoordenadaFicticia, bioma: BiomaCodigo) => void;
   /** Clique fora de Mato Grosso. */
   onForaDeMT: () => void;
+  /** Mapa só para ver o ponto (ficha do resgate): sem clique para marcar. */
+  somenteLeitura?: boolean;
 };
 
 /** Arredonda como nos exemplos (3 casas): a coordenada é fictícia, não precisa de precisão. */
@@ -22,7 +27,12 @@ function arredondar(valor: number): number {
 }
 
 /** Mapa do cadastro: clique para marcar o ponto fictício do resgate. */
-export default function MapaSelecaoPonto({ ponto, onEscolher, onForaDeMT }: MapaSelecaoPontoProps) {
+export default function MapaSelecaoPonto({
+  ponto,
+  onEscolher,
+  onForaDeMT,
+  somenteLeitura = false,
+}: MapaSelecaoPontoProps) {
   const contenedor = useRef<HTMLDivElement>(null);
   const mapa = useRef<MapaLeaflet | null>(null);
   const marcador = useRef<CircleMarker | null>(null);
@@ -30,6 +40,7 @@ export default function MapaSelecaoPonto({ ponto, onEscolher, onForaDeMT }: Mapa
   const aoEscolher = useRef(onEscolher);
   const aoSairDeMT = useRef(onForaDeMT);
   const [versaoMapa, setVersaoMapa] = useState(0);
+  const camadas = useCamadasSema(mapa, leaflet, versaoMapa, ["UNIDADES_DE_CONSERVACAO", "TERRAS_INDIGENAS"]);
 
   useEffect(() => {
     aoEscolher.current = onEscolher;
@@ -70,7 +81,7 @@ export default function MapaSelecaoPonto({ ponto, onEscolher, onForaDeMT }: Mapa
       }).addTo(instancia);
 
       instancia.fitBounds(limite.getBounds(), { padding: [8, 8] });
-      instancia.on("click", (evento) => {
+      if (!somenteLeitura) instancia.on("click", (evento) => {
         const lat = arredondar(evento.latlng.lat);
         const lng = arredondar(evento.latlng.lng);
         const bioma = biomaPorCoordenada(lat, lng);
@@ -91,12 +102,13 @@ export default function MapaSelecaoPonto({ ponto, onEscolher, onForaDeMT }: Mapa
       mapa.current = null;
       marcador.current = null;
     };
-  }, []);
+  }, [somenteLeitura]);
 
   // Mostra o ponto escolhido (ou nenhum).
   useEffect(() => {
     const L = leaflet.current;
     if (versaoMapa === 0 || !L || !mapa.current) return;
+    if (somenteLeitura && ponto) mapa.current.setView([ponto.lat, ponto.lng], 7);
     marcador.current?.remove();
     marcador.current = ponto
       ? L.circleMarker([ponto.lat, ponto.lng], {
@@ -108,15 +120,29 @@ export default function MapaSelecaoPonto({ ponto, onEscolher, onForaDeMT }: Mapa
           interactive: false,
         }).addTo(mapa.current)
       : null;
-  }, [versaoMapa, ponto]);
+  }, [versaoMapa, ponto, somenteLeitura]);
 
   return (
-    <div
-      ref={contenedor}
-      className={`${styles.mapa} ${styles.mapaCadastro}`}
-      role="region"
-      aria-label="Mapa para marcar o ponto fictício do resgate"
-      data-ponto={ponto ? `${ponto.lat},${ponto.lng}` : ""}
-    />
+    <>
+      <div
+        ref={contenedor}
+        className={`${styles.mapa} ${somenteLeitura ? "" : styles.mapaCadastro}`}
+        role="region"
+        aria-label={
+          somenteLeitura
+            ? "Mapa com o local do resgate e as camadas da SEMA"
+            : "Mapa para marcar o ponto fictício do resgate"
+        }
+        data-ponto={ponto ? `${ponto.lat},${ponto.lng}` : ""}
+      />
+      <ControleCamadas ligadas={camadas.ligadas} onAlternar={camadas.alternar} carregando={camadas.carregando} />
+      {ponto ? (
+        <QuadroGeografico
+          ponto={ponto}
+          bioma={biomaPorCoordenada(ponto.lat, ponto.lng)}
+          dados={camadas.dados}
+        />
+      ) : null}
+    </>
   );
 }

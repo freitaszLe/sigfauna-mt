@@ -16,6 +16,7 @@ import StatusBadge from "./StatusBadge";
 import { TOM_DA_ETAPA } from "./etapas";
 import blockStyles from "./PageBlock.module.css";
 import formStyles from "./Formulario.module.css";
+import FotoAnimal from "./FotoAnimal";
 import tableStyles from "./RecebimentosTable.module.css";
 
 /** Página de uma etapa do Acompanhamento (submenu), com colunas próprias da etapa. */
@@ -173,9 +174,14 @@ function TabelaFila({ fila, casos, filtrando }: { fila: Fila; casos: Resgate[]; 
                 <tr key={resgate.id}>
                   <td>{resgate.protocolo}</td>
                   <td>
-                    {resgate.especie}
-                    <span className={tableStyles.secondary}>
-                      {resgate.grupo} · {resgate.identificacao}
+                    <span className={tableStyles.animal}>
+                      <FotoAnimal especie={resgate.especie} />
+                      <span>
+                        {resgate.especie}
+                        <span className={tableStyles.secondary}>
+                          {resgate.grupo} · {resgate.identificacao}
+                        </span>
+                      </span>
                     </span>
                   </td>
                   {fila.colunas.map((coluna) => (

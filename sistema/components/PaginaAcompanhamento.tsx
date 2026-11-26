@@ -19,6 +19,7 @@ import StatusBadge from "./StatusBadge";
 import { TOM_DA_ETAPA } from "./etapas";
 import PageBlock from "./PageBlock";
 import formStyles from "./Formulario.module.css";
+import FotoAnimal from "./FotoAnimal";
 import tableStyles from "./RecebimentosTable.module.css";
 
 const ETAPAS_ATIVAS = ETAPAS.filter((etapa) => etapa !== "Concluído");
@@ -165,9 +166,14 @@ function TabelaCasosAtivos({ casos, filtrando }: { casos: readonly Resgate[]; fi
                 <tr key={resgate.id}>
                   <td>{resgate.protocolo}</td>
                   <td>
-                    {resgate.especie}
-                    <span className={tableStyles.secondary}>
-                      {resgate.grupo} · {resgate.identificacao}
+                    <span className={tableStyles.animal}>
+                      <FotoAnimal especie={resgate.especie} />
+                      <span>
+                        {resgate.especie}
+                        <span className={tableStyles.secondary}>
+                          {resgate.grupo} · {resgate.identificacao}
+                        </span>
+                      </span>
                     </span>
                   </td>
                   <td>
