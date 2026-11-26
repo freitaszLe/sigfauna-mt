@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { defineConfig, devices } from "@playwright/test";
 
-// A senha do teste de entrada vem de E2E_SENHA (no .env.local, fora do Git).
+// Variáveis locais opcionais (.env.local, fora do Git). A entrada do protótipo aceita qualquer valor.
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 
 const PORTA = 3100;

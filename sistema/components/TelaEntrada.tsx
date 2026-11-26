@@ -97,6 +97,17 @@ export default function TelaEntrada() {
             {conferindo ? "Entrando…" : "Entrar"}
           </button>
         </form>
+
+        <p className={styles.aviso} role="note">
+          <svg className={styles.icone} viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path d="M12 11v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="7.5" r="1.2" fill="currentColor" />
+          </svg>
+          <span>
+            <strong>Protótipo.</strong> Qualquer e-mail e senha entram; os dados são fictícios.
+          </span>
+        </p>
       </section>
     </main>
   );
